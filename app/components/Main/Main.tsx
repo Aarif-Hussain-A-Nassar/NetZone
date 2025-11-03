@@ -1,5 +1,7 @@
+import Navbar from "../Navbar/Navbar";
+
 export const Main = () => {
   return (
-    <h1 className="text-4xl font-bold">Welcome to NetZone</h1>
+    <Navbar />
   );
 };
