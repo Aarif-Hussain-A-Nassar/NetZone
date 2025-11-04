@@ -26,8 +26,7 @@ const Navbar: React.FC = () => {
   useEffect(() => {
     const html = document.documentElement;
     html.classList.add("light");
-    setIsLight(true);
-  }, []);
+}, []);
 
   return (
     <Container>
