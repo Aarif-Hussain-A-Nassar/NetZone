@@ -6,7 +6,8 @@ export const Container = styled(motion.header)`
   top: 0;
   left: 0;
   width: 100%;
-  padding: 1.2rem 5%;
+  padding: 1.2rem 10%;
+  box-sizing: border-box; /* Fix for 100% + padding overflow */
   display: flex;
   justify-content: space-between;
   align-items: center;

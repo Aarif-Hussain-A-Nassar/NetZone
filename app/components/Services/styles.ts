@@ -2,9 +2,11 @@ import styled from "styled-components";
 import { motion } from "framer-motion";
 
 export const ServicesSection = styled.section`
-  padding: 8rem 10%;
+  padding: 12rem 10% 8rem; /* Huge top padding to account for overlapping hero cards */
   background-color: var(--background);
   text-align: center;
+  position: relative;
+  z-index: 1;
 `;
 
 export const Header = styled.div`

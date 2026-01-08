@@ -4,12 +4,14 @@ import { motion } from "framer-motion";
 export const HeroSection = styled.section`
   position: relative;
   height: 100vh;
-  min-height: 700px;
+  min-height: 900px; /* Increased min-height to fit cards */
   width: 100%;
   display: flex;
   align-items: center;
   justify-content: flex-start;
   padding: 0 10%;
+  padding-bottom: 10rem; /* Ensure space for overlapping cards if absolute */
+  box-sizing: border-box;
   
   /* Placeholder Background Image - Replace with actual asset */
   background: url('https://images.unsplash.com/photo-1558002038-1091a1661116?q=80&w=2070&auto=format&fit=crop') no-repeat center center/cover;
@@ -52,23 +54,24 @@ export const Content = styled.div`
 
 export const InfoCards = styled.div`
   position: absolute;
-  bottom: 0;
+  bottom: -100px; /* Hang half-way out of the hero section */
   left: 50%;
   transform: translateX(-50%);
   width: 80%;
+  max-width: 1200px;
   display: grid;
   grid-template-columns: repeat(3, 1fr);
-  z-index: 3;
-  box-shadow: 0 10px 40px rgba(0,0,0,0.1);
+  z-index: 10;
+  box-shadow: 0 20px 50px rgba(0,0,0,0.15);
 
   @media (max-width: 900px) {
     position: relative;
-    transform: none;
+    bottom: auto;
     left: auto;
+    transform: none;
     width: 100%;
     grid-template-columns: 1fr;
-    bottom: auto;
-    margin-top: 2rem;
+    margin-top: 4rem;
   }
 `;
 
