@@ -2,90 +2,151 @@
 
 import { useState, useEffect } from "react";
 import Link from "next/link";
-import { motion } from "framer-motion";
-import { Container } from "./styles";
+import { motion, AnimatePresence } from "framer-motion";
+import { Container, MobileMenu } from "./styles";
+
+const navItems = [
+  { name: "Home", href: "#home" },
+  { name: "Services", href: "#services" },
+  { name: "Projects", href: "#projects" },
+  { name: "Team", href: "#team" },
+  { name: "Contact", href: "#contact" },
+];
 
 const Navbar: React.FC = () => {
-  const [isActive, setActive] = useState(false);
+  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const [isLight, setIsLight] = useState(true);
+  const [hoveredIndex, setHoveredIndex] = useState<number | null>(null);
+  const [scrolled, setScrolled] = useState(false);
 
   // Toggle light/dark theme
   const toggleTheme = () => {
     const html = document.documentElement;
-    html.classList.toggle("light");
-    html.classList.toggle("dark");
+    if (isLight) {
+      html.classList.remove("light");
+      html.classList.add("dark");
+    } else {
+      html.classList.remove("dark");
+      html.classList.add("light");
+    }
     setIsLight(!isLight);
   };
 
   // Close menu on link click
   const closeMenu = () => {
-    setActive(false);
+    setIsMobileMenuOpen(false);
   };
 
-  // Default theme
+  // Handle scroll effect
+  useEffect(() => {
+    const handleScroll = () => {
+      setScrolled(window.scrollY > 50);
+    };
+    
+    // Check initial scroll
+    handleScroll();
+    
+    window.addEventListener("scroll", handleScroll);
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
+
+  // Default theme initialization
   useEffect(() => {
     const html = document.documentElement;
-    html.classList.add("light");
-}, []);
+    if (!html.classList.contains("dark") && !html.classList.contains("light")) {
+         html.classList.add("light");
+    }
+  }, []);
 
   return (
-    <Container>
-      {/* LOGO */}
-      <motion.div
-        className="logo"
-        whileHover={{ scale: 1.05, rotate: 2 }}
-        whileTap={{ scale: 0.95, rotate: -2 }}
-        transition={{ type: "spring", stiffness: 250 }}
+    <>
+      <Container 
+        className={scrolled ? "scrolled" : ""}
+        initial={{ y: -100, opacity: 0 }}
+        animate={{ y: 0, opacity: 1, x: "-50%" }} // Maintaining x: -50% for centering
+        transition={{ duration: 0.8, type: "spring", bounce: 0.3 }}
       >
-        <Link href="#home">
-          <h1>
-            Next<span>Zone</span>
-          </h1>
-        </Link>
-      </motion.div>
-
-      {/* NAVIGATION + THEME TOGGLE + MENU */}
-      <div className="right-section">
-        {/* Navigation Links */}
-        <nav className={isActive ? "active" : ""}>
-          {["Home", "Services", "Projects", "Team", "Contact"].map(
-            (item, i) => (
-              <motion.div
-                key={i}
-                whileHover={{ scale: 1.1, color: "#0070F3" }}
-                whileTap={{ scale: 0.95 }}
-                transition={{ type: "spring", stiffness: 300 }}
-              >
-                <Link href={`#${item.toLowerCase()}`} onClick={closeMenu}>
-                  {item}
-                </Link>
-              </motion.div>
-            )
-          )}
-        </nav>
-
-        {/* Theme Toggle */}
+        {/* LOGO */}
         <motion.div
-          className="theme-toggle"
-          whileHover={{ scale: 1.1, rotate: -2 }}
-          whileTap={{ scale: 0.9, rotate: 2 }}
+          className="logo"
+          whileHover={{ scale: 1.05 }}
+          whileTap={{ scale: 0.95 }}
         >
-          <input
-            type="checkbox"
-            id="switch"
-            checked={isLight}
-            onChange={toggleTheme}
-          />
-          <label htmlFor="switch" />
+          <Link href="#home">
+            <h1>
+              Next<span>Zone</span>
+            </h1>
+          </Link>
         </motion.div>
 
-        {/* Hamburger Menu */}
-        <div
-          className={isActive ? "menu active" : "menu"}
-          onClick={() => setActive(!isActive)}
-        />
-      </div>
-    </Container>
+        {/* DESKTOP NAV */}
+        <nav className="desktop-nav">
+          {navItems.map((item, i) => (
+            <Link
+              key={item.name}
+              href={item.href}
+              className="nav-link"
+              onMouseEnter={() => setHoveredIndex(i)}
+              onMouseLeave={() => setHoveredIndex(null)}
+            >
+              {hoveredIndex === i && (
+                <motion.div
+                  className="hover-bg"
+                  layoutId="hover-bg"
+                  transition={{ type: "spring", bounce: 0.2, duration: 0.6 }}
+                />
+              )}
+              <span>{item.name}</span>
+            </Link>
+          ))}
+        </nav>
+
+        {/* RIGHT SECTION */}
+        <div className="right-section">
+          {/* Theme Toggle */}
+          <motion.div
+            className="theme-toggle"
+            whileTap={{ scale: 0.9 }}
+            onClick={toggleTheme}
+            aria-label="Toggle theme"
+          >
+            <motion.div
+              className="toggle-handle"
+              animate={{ x: isLight ? 0 : 24 }}
+              transition={{ type: "spring", stiffness: 500, damping: 30 }}
+            />
+          </motion.div>
+
+          {/* Hamburger Menu Trigger */}
+          <div
+            className={`menu-trigger ${isMobileMenuOpen ? "active" : ""}`}
+            onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
+          >
+            <div className="bar bar-1" />
+            <div className="bar bar-2" />
+            <div className="bar bar-3" />
+          </div>
+        </div>
+      </Container>
+
+      {/* MOBILE MENU */}
+      <AnimatePresence>
+        {isMobileMenuOpen && (
+          <MobileMenu
+            initial={{ opacity: 0, y: -20, x: "-50%" }}
+            animate={{ opacity: 1, y: 0, x: "-50%" }}
+            exit={{ opacity: 0, y: -20, x: "-50%" }}
+            transition={{ duration: 0.3, type: "spring", bounce: 0.2 }}
+          >
+            {navItems.map((item) => (
+              <Link key={item.name} href={item.href} onClick={closeMenu}>
+                {item.name}
+              </Link>
+            ))}
+          </MobileMenu>
+        )}
+      </AnimatePresence>
+    </>
   );
 };
 
