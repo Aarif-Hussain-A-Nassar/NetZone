@@ -3,83 +3,107 @@ import { motion } from "framer-motion";
 
 export const Container = styled(motion.header)`
   position: fixed;
-  top: 1.5rem;
-  left: 50%;
-  transform: translateX(-50%);
-  width: 90%;
-  max-width: 1000px;
-  padding: 0.8rem 1.5rem;
+  top: 0;
+  left: 0;
+  width: 100%;
+  padding: 1.2rem 5%;
   display: flex;
   justify-content: space-between;
   align-items: center;
   z-index: 1000;
 
-  background: rgba(255, 255, 255, 0.6);
-  backdrop-filter: blur(16px);
-  -webkit-backdrop-filter: blur(16px);
-  border: 1px solid rgba(255, 255, 255, 0.3);
-  border-radius: 999px;
-  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.05);
+  /* Reference Style: Clean, Professional, Full Width */
+  background: rgba(255, 255, 255, 0.95);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border-bottom: 1px solid rgba(0,0,0,0.05);
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.03);
 
   transition: all 0.3s ease;
 
   &.scrolled {
-    background: rgba(255, 255, 255, 0.8);
-    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
-    padding: 0.6rem 1.5rem;
+    padding: 0.8rem 5%;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
   }
 
-  /* Dark mode handling if class exists on parent or variables update */
-  /* Assuming global CSS sets these vars for dark mode */
-
   .logo {
+    display: flex;
+    align-items: center;
+    
     h1 {
-      font-size: 1.5rem;
+      font-size: 1.6rem;
       font-weight: 800;
       margin: 0;
-      color: var(--heading-color, #1a1a1a);
-      letter-spacing: -0.5px;
+      color: #1a1a1a; /* Always dark for readability on white */
+      letter-spacing: -1px;
+      text-transform: uppercase;
+      font-family: 'Inter', sans-serif;
       cursor: pointer;
+      line-height: 1;
 
       span {
-        color: var(--brand-color, #0070f3);
+        color: var(--brand-color);
       }
     }
   }
 
   .desktop-nav {
     display: flex;
-    gap: 0.5rem;
+    align-items: center;
+    gap: 2rem;
     
-    @media (max-width: 860px) {
+    @media (max-width: 900px) {
       display: none;
     }
 
     .nav-link {
       position: relative;
-      padding: 0.5rem 1rem;
-      color: var(--heading-color, #1a1a1a);
-      font-weight: 500;
-      font-size: 0.95rem;
+      color: #333;
+      font-weight: 700;
+      font-size: 0.9rem;
       text-decoration: none;
-      z-index: 1;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
       transition: color 0.3s;
+      padding: 0.5rem 0;
 
       &:hover {
-        color: #0070f3;
+        color: var(--brand-color);
       }
 
-      span {
-        position: relative;
-        z-index: 2;
-      }
-
-      .hover-bg {
+      /* Animated underscore */
+      &::after {
+        content: '';
         position: absolute;
-        inset: 0;
-        background: rgba(0, 112, 243, 0.08);
-        border-radius: 99px;
-        z-index: 1;
+        bottom: 0;
+        left: 0;
+        width: 0;
+        height: 2px;
+        background: var(--brand-color);
+        transition: width 0.3s ease;
+      }
+
+      &:hover::after {
+        width: 100%;
+      }
+
+      /* Special CTA Style for the last item (Contact) */
+      &:last-child {
+        background: var(--brand-color);
+        color: white;
+        padding: 0.6rem 1.8rem;
+        border-radius: 4px;
+        transition: all 0.3s ease;
+        
+        &::after {
+          display: none;
+        }
+
+        &:hover {
+          background: #00A68A; /* Slightly darker teal */
+          transform: translateY(-2px);
+          box-shadow: 0 5px 15px rgba(0, 201, 167, 0.3);
+        }
       }
     }
   }
@@ -87,53 +111,49 @@ export const Container = styled(motion.header)`
   .right-section {
     display: flex;
     align-items: center;
-    gap: 1rem;
+    gap: 1.5rem;
   }
 
+  /* Simplified Toggle for Corporate Look */
   .theme-toggle {
-    width: 52px;
-    height: 28px;
+    width: 48px;
+    height: 26px;
     background: #e2e8f0; 
     border-radius: 50px;
     display: flex;
     align-items: center;
     padding: 2px;
     cursor: pointer;
-    position: relative;
     border: 1px solid rgba(0,0,0,0.05);
 
     .toggle-handle {
-      width: 22px;
-      height: 22px;
+      width: 20px;
+      height: 20px;
       background: white;
       border-radius: 50%;
-      box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+      box-shadow: 0 1px 3px rgba(0,0,0,0.2);
     }
   }
-
-  /* When dark mode is active, adjust toggle style if needed */
-  /* This relies on logic inside the component passing filtered props or simple css inheritance */
 
   .menu-trigger {
     display: none;
     flex-direction: column;
     justify-content: center;
-    gap: 6px;
+    gap: 5px;
     cursor: pointer;
-    width: 30px;
-    height: 30px;
+    width: 28px;
+    height: 28px;
 
-    @media (max-width: 860px) {
+    @media (max-width: 900px) {
       display: flex;
     }
 
     .bar {
       width: 100%;
-      height: 2px;
-      background: var(--heading-color, #1a1a1a);
-      border-radius: 2px;
-      transition: all 0.3s ease-in-out;
-      transform-origin: center;
+      height: 3px;
+      background: #1a1a1a;
+      border-radius: 3px;
+      transition: all 0.3s ease;
     }
 
     &.active {
@@ -146,37 +166,38 @@ export const Container = styled(motion.header)`
 
 export const MobileMenu = styled(motion.div)`
   position: fixed;
-  top: 5.5rem;
-  left: 5%; 
-  width: 90%;
+  top: 0;
+  left: 0; 
+  width: 100vw;
+  height: 100vh;
   z-index: 999;
-  background: rgba(255, 255, 255, 0.85);
-  backdrop-filter: blur(20px);
-  -webkit-backdrop-filter: blur(20px);
-  border-radius: 24px;
-  border: 1px solid rgba(255,255,255,0.4);
-  box-shadow: 0 20px 50px rgba(0,0,0,0.1);
+  background: white;
   padding: 2rem;
   display: flex;
   flex-direction: column;
+  justify-content: center;
   align-items: center;
-  gap: 1.5rem;
-  overflow: hidden;
+  gap: 2rem;
 
   a {
-    font-size: 1.25rem;
-    font-weight: 600;
-    color: var(--heading-color, #1a1a1a);
+    font-size: 1.5rem;
+    font-weight: 800;
+    color: #1a1a1a;
     text-decoration: none;
-    width: 100%;
-    text-align: center;
-    padding: 0.8rem;
-    border-radius: 12px;
-    transition: background 0.2s;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    transition: color 0.2s;
 
     &:hover {
-      background: rgba(0,0,0,0.03);
-      color: #0070f3;
+      color: var(--brand-color);
+    }
+
+    /* Mobile CTA */
+    &:last-child {
+      background: var(--brand-color);
+      color: white;
+      padding: 1rem 3rem;
+      border-radius: 5px;
     }
   }
 `;

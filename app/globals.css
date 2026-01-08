@@ -7,7 +7,7 @@
   --foreground: #171717;
   --card-bg: #ffffff;
   --heading-color: #171717;
-  --brand-color: #0070f3;
+  --brand-color: #00C9A7; /* Reference Teal */
 }
 
 /* Dark mode overrides */
@@ -16,7 +16,7 @@
   --foreground: #ededed;
   --card-bg: #1a1a1a;
   --heading-color: #ffffff;
-  --brand-color: #3b82f6;
+  --brand-color: #00C9A7;
 }
 
 html {
