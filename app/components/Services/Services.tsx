@@ -49,7 +49,7 @@ const ServiceItem = ({ service, index }: { service: any, index: number }) => {
     >
       <CardInner
         animate={{ rotateY: isFlipped ? 180 : 0 }}
-        transition={{ duration: 0.6, type: "spring", stiffness: 260, damping: 20 }}
+        transition={{ duration: 0.4, type: "spring", stiffness: 260, damping: 20 }}
       >
         <CardFront>
           <h3>{service.title}</h3>
