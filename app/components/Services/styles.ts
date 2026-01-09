@@ -45,18 +45,55 @@ export const ServiceGrid = styled.div`
   }
 `;
 
-export const ServiceCard = styled(motion.div)`
-  background: var(--card-bg);
-  padding: 3rem 2rem;
-  border-radius: 8px; /* Slight rounding, reference is quite boxy though */
-  text-align: center;
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
-  border: 1px solid transparent;
+export const CardWrapper = styled(motion.div)`
+  perspective: 1000px;
+  height: 100%; /* Stretch to fill the grid cell, ensuring equal height */
+  min-height: 350px; /* Minimum height constraint */
+  cursor: default;
+  position: relative; /* Ensure z-index works */
+  z-index: 1;
 
   &:hover {
-    transform: translateY(-5px);
+    z-index: 10; /* Bring to front on hover/interaction */
+  }
+`;
+
+export const CardInner = styled(motion.div)`
+  position: relative;
+  width: 100%;
+  height: 100%;
+  text-align: center;
+  transition: transform 0.6s;
+  transform-style: preserve-3d;
+`;
+
+const CardFace = styled.div`
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  -webkit-backface-visibility: hidden;
+  backface-visibility: hidden;
+  border-radius: 8px;
+  padding: 3rem 2rem;
+  background: var(--card-bg);
+  border: 1px solid transparent;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  box-shadow: 0 4px 15px rgba(0,0,0,0.05); /* Match original slightly */
+  
+  /* Hover effects from original ServiceCard */
+  transition: border-color 0.3s ease, box-shadow 0.3s ease;
+`;
+
+export const CardFront = styled(CardFace)`
+  /* Matches original ServiceCard styles */
+  
+  &:hover {
     box-shadow: 0 10px 30px rgba(0,0,0,0.05);
     border-color: var(--brand-color);
+    /* removed translateY to avoid confusing physics with flip, but kept shadow/border */
   }
 
   h3 {
@@ -88,6 +125,20 @@ export const ServiceCard = styled(motion.div)`
     &:hover {
       background: #00A68A;
     }
+  }
+`;
+
+export const CardBack = styled(CardFace)`
+  transform: rotateY(180deg);
+  background: var(--card-bg);
+  border: 1px solid var(--brand-color);
+  cursor: pointer; /* Indicates clickable to flip back */
+
+  h3 {
+    font-size: 1.8rem;
+    color: var(--brand-color);
+    text-transform: uppercase;
+    font-weight: 800;
   }
 `;
 

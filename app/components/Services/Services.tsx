@@ -1,7 +1,8 @@
 "use client";
 
+import { useState } from "react";
 import { motion } from "framer-motion";
-import { ServicesSection, Header, ServiceGrid, ServiceCard } from "./styles";
+import { ServicesSection, Header, ServiceGrid, CardWrapper, CardInner, CardFront, CardBack } from "./styles";
 
 const services = [
   {
@@ -36,6 +37,34 @@ const services = [
   }
 ];
 
+const ServiceItem = ({ service, index }: { service: any, index: number }) => {
+  const [isFlipped, setIsFlipped] = useState(false);
+
+  return (
+    <CardWrapper
+      initial={{ opacity: 0, y: 50 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      transition={{ duration: 0.5, delay: index * 0.1 }}
+      viewport={{ once: true }}
+    >
+      <CardInner
+        animate={{ rotateY: isFlipped ? 180 : 0 }}
+        transition={{ duration: 0.6, type: "spring", stiffness: 260, damping: 20 }}
+      >
+        <CardFront>
+          <h3>{service.title}</h3>
+          <p>{service.description}</p>
+          <button onClick={() => setIsFlipped(true)}>Read More</button>
+        </CardFront>
+
+        <CardBack onClick={() => setIsFlipped(false)}>
+          <h3>HI WELCOME TO NETZONE</h3>
+        </CardBack>
+      </CardInner>
+    </CardWrapper>
+  );
+};
+
 const Services = () => {
   return (
     <ServicesSection id="services">
@@ -58,16 +87,7 @@ const Services = () => {
 
       <ServiceGrid>
         {services.map((service, index) => (
-          <ServiceCard
-            key={index}
-            initial={{ y: 50, opacity: 0 }}
-            whileInView={{ y: 0, opacity: 1 }}
-            transition={{ duration: 0.5, delay: index * 0.2 }}
-          >
-            <h3>{service.title}</h3>
-            <p>{service.description}</p>
-            <button>Read More</button>
-          </ServiceCard>
+          <ServiceItem key={index} service={service} index={index} />
         ))}
       </ServiceGrid>
     </ServicesSection>
