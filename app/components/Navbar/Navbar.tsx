@@ -63,7 +63,7 @@ const Navbar: React.FC = () => {
       <Container 
         className={scrolled ? "scrolled" : ""}
         initial={{ y: -100, opacity: 0 }}
-        animate={{ y: 0, opacity: 1, x: "-50%" }} // Maintaining x: -50% for centering
+        animate={{ y: 0, opacity: 1 }}
         transition={{ duration: 0.8, type: "spring", bounce: 0.3 }}
       >
         {/* LOGO */}
@@ -133,9 +133,9 @@ const Navbar: React.FC = () => {
       <AnimatePresence>
         {isMobileMenuOpen && (
           <MobileMenu
-            initial={{ opacity: 0, y: -20, x: "-50%" }}
-            animate={{ opacity: 1, y: 0, x: "-50%" }}
-            exit={{ opacity: 0, y: -20, x: "-50%" }}
+            initial={{ opacity: 0, y: -20 }}
+            animate={{ opacity: 1, y: 0 }}
+            exit={{ opacity: 0, y: -20 }}
             transition={{ duration: 0.3, type: "spring", bounce: 0.2 }}
           >
             {navItems.map((item) => (

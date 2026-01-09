@@ -15,6 +15,13 @@ export const HeroSection = styled.section`
   
   /* Placeholder Background Image - Replace with actual asset */
   background: url('https://images.unsplash.com/photo-1558002038-1091a1661116?q=80&w=2070&auto=format&fit=crop') no-repeat center center/cover;
+
+  @media (max-width: 900px) {
+    flex-direction: column;
+    justify-content: center;
+    padding: 8rem 5% 4rem;
+    height: auto;
+  }
 `;
 
 export const Overlay = styled.div`

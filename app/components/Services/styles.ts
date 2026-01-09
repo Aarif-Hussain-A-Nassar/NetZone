@@ -7,6 +7,10 @@ export const ServicesSection = styled.section`
   text-align: center;
   position: relative;
   z-index: 1;
+
+  @media (max-width: 900px) {
+    padding: 6rem 5% 4rem;
+  }
 `;
 
 export const Header = styled.div`

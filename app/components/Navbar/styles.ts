@@ -27,6 +27,10 @@ export const Container = styled(motion.header)`
     box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
   }
 
+  @media (max-width: 768px) {
+    padding: 1rem 5%;
+  }
+
   .logo {
     display: flex;
     align-items: center;
@@ -52,7 +56,10 @@ export const Container = styled(motion.header)`
     display: flex;
     align-items: center;
     gap: 2rem;
-    
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+
     @media (max-width: 900px) {
       display: none;
     }

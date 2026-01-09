@@ -4,6 +4,10 @@ export const FooterSection = styled.footer`
   background-color: #333; /* Dark Grey as per reference */
   color: white;
   padding: 5rem 10% 2rem;
+
+  @media (max-width: 768px) {
+    padding: 3rem 5% 2rem;
+  }
 `;
 
 export const Container = styled.div`
@@ -25,6 +29,10 @@ export const CTA = styled.div`
     text-transform: uppercase;
     margin-bottom: 1.5rem;
     font-family: 'Inter', sans-serif;
+
+    @media (max-width: 768px) {
+      font-size: 1.8rem;
+    }
   }
 
   p {
