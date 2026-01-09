@@ -1,23 +1,42 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { HeroSection, Overlay, Content, InfoCards, Card } from "./styles";
+import { HeroSection, Overlay, Content, InfoCards, Card, ThreeDContainer, TopSection } from "./styles";
 
 const Hero = () => {
   return (
     <HeroSection id="home">
       <Overlay />
-      <Content>
-        <motion.h1
-          initial={{ y: 30, opacity: 0 }}
-          animate={{ y: 0, opacity: 1 }}
-          transition={{ duration: 0.8 }}
-        >
-          NETZONE <br />
-          <span>THE COMPLETE</span> <br />
-          SOLUTION <br />
-        </motion.h1>
-      </Content>
+      <TopSection>
+        <Content>
+          <motion.h1
+            initial={{ y: 30, opacity: 0 }}
+            animate={{ y: 0, opacity: 1 }}
+            transition={{ duration: 0.8 }}
+          >
+            NETZONE <br />
+            <span>FUTURE OF</span> <br />
+            SECURITY
+          </motion.h1>
+        </Content>
+
+        <ThreeDContainer initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ duration: 1 }}>
+          <motion.div
+            className="cube"
+            // Auto-rotate when not hovered.
+            // When hovered, 'animate' is disabled (false), and 'style' takes over.
+            animate={{ rotateX: [0, 360], rotateY: [0, 360] }}
+            transition={{ duration: 20, repeat: Infinity, ease: "linear" }}
+          >
+            <div className="face front">NETZONE</div>
+            <div className="face back">SECURE</div>
+            <div className="face right">FAST</div>
+            <div className="face left">SMART</div>
+            <div className="face top">FUTURE</div>
+            <div className="face bottom">GLOBAL</div>
+          </motion.div>
+        </ThreeDContainer>
+      </TopSection>
 
       <InfoCards>
         <Card
@@ -26,8 +45,8 @@ const Hero = () => {
           transition={{ duration: 0.5, delay: 0.2 }}
         >
           <div className="icon">📹</div>
-          <h3>CCTV & SECURITY</h3>
-          <p>Advanced surveillance and biometrics for complete peace of mind.</p>
+          <h3>CCTV & AI</h3>
+          <p>Next-gen surveillance with predictive analysis.</p>
         </Card>
 
         <Card
@@ -36,8 +55,8 @@ const Hero = () => {
           transition={{ duration: 0.5, delay: 0.4 }}
         >
           <div className="icon">🌐</div>
-          <h3>NETWORKING</h3>
-          <p>Robust networking solutions, access points, and structured cabling.</p>
+          <h3>HYPER-NET</h3>
+          <p>Ultra-low latency networking for the modern era.</p>
         </Card>
 
         <Card
@@ -46,8 +65,8 @@ const Hero = () => {
           transition={{ duration: 0.5, delay: 0.6 }}
         >
           <div className="icon">🏠</div>
-          <h3>HOME AUTOMATION</h3>
-          <p>Smart home features, gate automation, and video door phones.</p>
+          <h3>SMART LIVE</h3>
+          <p>Fully automated environments responding to you.</p>
         </Card>
       </InfoCards>
     </HeroSection>

@@ -42,10 +42,10 @@ const Navbar: React.FC = () => {
     const handleScroll = () => {
       setScrolled(window.scrollY > 50);
     };
-    
+
     // Check initial scroll
     handleScroll();
-    
+
     window.addEventListener("scroll", handleScroll);
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
@@ -54,13 +54,13 @@ const Navbar: React.FC = () => {
   useEffect(() => {
     const html = document.documentElement;
     if (!html.classList.contains("dark") && !html.classList.contains("light")) {
-         html.classList.add("light");
+      html.classList.add("light");
     }
   }, []);
 
   return (
     <>
-      <Container 
+      <Container
         className={scrolled ? "scrolled" : ""}
         initial={{ y: -100, opacity: 0 }}
         animate={{ y: 0, opacity: 1 }}
@@ -103,6 +103,17 @@ const Navbar: React.FC = () => {
 
         {/* RIGHT SECTION */}
         <div className="right-section">
+          {/* Call Us Now Button */}
+          <Link href="tel:+1234567890" style={{ textDecoration: 'none' }}>
+            <motion.button
+              className="call-btn"
+              whileHover={{ scale: 1.05 }}
+              whileTap={{ scale: 0.95 }}
+            >
+              Call Us Now
+            </motion.button>
+          </Link>
+
           {/* Theme Toggle */}
           <motion.div
             className="theme-toggle"

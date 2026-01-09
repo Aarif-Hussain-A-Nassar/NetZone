@@ -3,22 +3,41 @@
 @tailwind utilities;
 
 :root {
+  /* Client Brand Identity - Classic Light */
   --background: #ffffff;
   --foreground: #171717;
+  /* Soft black for text */
   --card-bg: #f8f9fa;
-  --heading-color: #171717;
-  --brand-color: #6B2D87; /* NetZone Purple */
-  --brand-secondary: #A2D43D; /* NetZone Green */
+  --card-border: #e9ecef;
+
+  /* Official Brand Colors */
+  --brand-purple: #6B2D87;
+  --brand-green: #A2D43D;
+  --brand-gradient: linear-gradient(135deg, #6B2D87 0%, #A2D43D 100%);
+
+  --brand-color: var(--brand-purple);
+  /* Primary interaction color */
+  --brand-secondary: var(--brand-green);
+
+  --glass-bg: rgba(255, 255, 255, 0.9);
+  --glass-border: 1px solid rgba(0, 0, 0, 0.05);
+  --glass-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
 }
 
-/* Dark mode overrides */
 .dark {
+  /* Client Brand Identity - Classic Dark */
   --background: #0a0a0a;
-  --foreground: #ededed;
+  --foreground: #ffffff;
   --card-bg: #1a1a1a;
-  --heading-color: #ffffff;
-  --brand-color: #6B2D87;
+  --card-border: #333333;
+
+  --brand-color: #9d4ecc;
+  /* Lighter purple for dark mode contrast */
   --brand-secondary: #A2D43D;
+
+  --glass-bg: rgba(26, 26, 26, 0.9);
+  --glass-border: 1px solid rgba(255, 255, 255, 0.1);
+  --glass-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
 }
 
 html {
@@ -26,15 +45,36 @@ html {
   box-sizing: border-box;
 }
 
-*, *:before, *:after {
+*,
+*:before,
+*:after {
   box-sizing: inherit;
 }
 
 body {
   color: var(--foreground);
   background: var(--background);
-  font-family: Arial, Helvetica, sans-serif;
-  transition: background-color 0.3s ease, color 0.3s ease;
+  font-family: 'Inter', sans-serif;
   margin: 0;
   padding: 0;
+  transition: background-color 0.3s ease, color 0.3s ease;
+  overflow-x: hidden;
+}
+
+/* Custom Scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--background);
+}
+
+::-webkit-scrollbar-thumb {
+  background: #888;
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #555;
 }

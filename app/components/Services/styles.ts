@@ -2,8 +2,8 @@ import styled from "styled-components";
 import { motion } from "framer-motion";
 
 export const ServicesSection = styled.section`
-  padding: 12rem 10% 8rem; /* Huge top padding to account for overlapping hero cards */
-  background-color: var(--background);
+  padding: 12rem 10% 8rem;
+  background-color: transparent; /* allow global background to show */
   text-align: center;
   position: relative;
   z-index: 1;
@@ -17,16 +17,28 @@ export const Header = styled.div`
   margin-bottom: 4rem;
 
   h2 {
-    font-size: 2.5rem;
-    font-weight: 800;
-    color: var(--brand-color); /* Teal */
+    font-size: 3rem;
+    font-weight: 900;
+    background: var(--brand-gradient);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
     text-transform: uppercase;
     margin-bottom: 1rem;
     font-family: 'Inter', sans-serif;
+    letter-spacing: -1px;
+    
+    &::after {
+      content: '';
+      display: block;
+      width: 60px;
+      height: 4px;
+      background: var(--brand-green);
+      margin: 1rem auto 0;
+    }
   }
 
   p {
-    font-size: 1.1rem;
+    font-size: 1.2rem;
     color: var(--foreground);
     opacity: 0.7;
     max-width: 600px;
@@ -47,14 +59,13 @@ export const ServiceGrid = styled.div`
 
 export const CardWrapper = styled(motion.div)`
   perspective: 1000px;
-  height: 100%; /* Stretch to fill the grid cell, ensuring equal height */
-  min-height: 350px; /* Minimum height constraint */
-  cursor: default;
-  position: relative; /* Ensure z-index works */
+  height: 100%;
+  min-height: 400px;
+  cursor: pointer;
   z-index: 1;
 
   &:hover {
-    z-index: 10; /* Bring to front on hover/interaction */
+    z-index: 10;
   }
 `;
 
@@ -63,7 +74,7 @@ export const CardInner = styled(motion.div)`
   width: 100%;
   height: 100%;
   text-align: center;
-  transition: transform 0.4s;
+  transition: transform 0.6s cubic-bezier(0.175, 0.885, 0.32, 1.275);
   transform-style: preserve-3d;
 `;
 
@@ -73,35 +84,51 @@ const CardFace = styled.div`
   height: 100%;
   -webkit-backface-visibility: hidden;
   backface-visibility: hidden;
-  border-radius: 8px;
+  border-radius: 16px;
   padding: 3rem 2rem;
   background: var(--card-bg);
-  border: 1px solid transparent;
+  border: 1px solid var(--card-border);
+  backdrop-filter: blur(10px);
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  box-shadow: 0 4px 15px rgba(0,0,0,0.05); /* Match original slightly */
+  box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.05);
   
-  /* Hover effects from original ServiceCard */
-  transition: border-color 0.3s ease, box-shadow 0.3s ease;
+  transition: all 0.3s ease;
 `;
 
 export const CardFront = styled(CardFace)`
-  /* Matches original ServiceCard styles */
+  background: var(--card-bg); /* Explicit resting background */
   
   &:hover {
-    box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+    background: var(--brand-color); /* Purple on Hover */
     border-color: var(--brand-color);
-    /* removed translateY to avoid confusing physics with flip, but kept shadow/border */
+    box-shadow: 0 15px 40px rgba(107, 45, 135, 0.3);
+
+    h3, p {
+      color: white !important;
+      opacity: 1;
+    }
+
+    button {
+      border-color: white;
+      color: white;
+      
+      &:hover {
+        background: white;
+        color: var(--brand-color);
+      }
+    }
   }
 
   h3 {
     font-size: 1.5rem;
     font-weight: 800;
-    color: var(--heading-color);
+    color: var(--brand-color);
     margin-bottom: 1rem;
     text-transform: uppercase;
+    transition: color 0.3s;
   }
 
   p {
@@ -109,34 +136,36 @@ export const CardFront = styled(CardFace)`
     opacity: 0.8;
     margin-bottom: 2rem;
     line-height: 1.6;
+    transition: color 0.3s;
   }
 
   button {
-    background: var(--brand-color);
-    color: white;
-    border: none;
+    background: transparent;
+    color: var(--brand-secondary);
+    border: 1px solid var(--brand-secondary);
     padding: 0.8rem 2rem;
     font-weight: 700;
     text-transform: uppercase;
     cursor: pointer;
-    transition: background 0.3s ease;
+    transition: all 0.3s ease;
     border-radius: 4px;
 
     &:hover {
-      background: #00A68A;
+      background: var(--brand-secondary);
+      color: white;
+      box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
     }
   }
 `;
 
 export const CardBack = styled(CardFace)`
   transform: rotateY(180deg);
-  background: var(--card-bg);
+  background: var(--brand-color);
   border: 1px solid var(--brand-color);
-  cursor: pointer; /* Indicates clickable to flip back */
 
   h3 {
     font-size: 1.8rem;
-    color: var(--brand-color);
+    color: var(--background); /* Invert for back face if background is brand color */
     text-transform: uppercase;
     font-weight: 800;
   }

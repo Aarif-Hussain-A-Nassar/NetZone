@@ -1,11 +1,11 @@
 import styled from "styled-components";
 
 export const FooterSection = styled.footer`
-  background: linear-gradient(to bottom, #111, #050505);
+  background: black;
   color: white;
   padding: 6rem 10% 3rem;
   position: relative;
-  border-top: 1px solid rgba(255, 255, 255, 0.05);
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
   overflow: hidden;
 
   /* Ambient Glow */
@@ -15,11 +15,11 @@ export const FooterSection = styled.footer`
     top: -500px;
     left: 50%;
     transform: translateX(-50%);
-    width: 600px;
-    height: 600px;
-    background: radial-gradient(circle, var(--brand-color) 0%, transparent 70%);
-    opacity: 0.1;
+    width: 800px;
+    height: 800px;
+    background: radial-gradient(circle, rgba(0, 243, 255, 0.15) 0%, transparent 70%);
     pointer-events: none;
+    z-index: 1;
   }
 
   @media (max-width: 768px) {
@@ -39,41 +39,38 @@ export const Container = styled.div`
 
 export const CTA = styled.div`
   text-align: center;
-  padding: 4rem 2rem;
-  background: rgba(255, 255, 255, 0.03);
-  backdrop-filter: blur(10px);
-  border: 1px solid rgba(255, 255, 255, 0.05);
-  border-radius: 16px;
-  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+  padding: 5rem 2rem;
+  background: rgba(10, 10, 30, 0.5);
+  backdrop-filter: blur(20px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 24px;
+  box-shadow: 0 0 50px rgba(0, 0, 0, 0.5);
   position: relative;
   overflow: hidden;
 
-  /* Shine effect */
-  &::after {
+  /* Neon pulse border */
+  &::before {
     content: '';
     position: absolute;
-    top: 0;
-    left: -100%;
-    width: 100%;
-    height: 100%;
-    background: linear-gradient(90deg, transparent, rgba(255,255,255,0.05), transparent);
-    transition: 0.5s;
-    animation: shine 8s infinite linear;
-  }
-
-  @keyframes shine {
-    0% { left: -100%; }
-    20% { left: 100%; }
-    100% { left: 100%; }
+    inset: 0;
+    border-radius: 24px;
+    padding: 2px;
+    background: linear-gradient(45deg, var(--neon-cyan), transparent, var(--neon-purple), transparent);
+    -webkit-mask: 
+      linear-gradient(#fff 0 0) content-box, 
+      linear-gradient(#fff 0 0);
+    -webkit-mask-composite: xor;
+    mask-composite: exclude;
+    pointer-events: none;
   }
 
   h2 {
-    font-size: 2.8rem;
-    font-weight: 800;
+    font-size: 3rem;
+    font-weight: 900;
     text-transform: uppercase;
     margin-bottom: 1rem;
     font-family: 'Inter', sans-serif;
-    background: linear-gradient(90deg, #fff, #bbb);
+    background: linear-gradient(90deg, #fff, #888);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
 
@@ -84,15 +81,15 @@ export const CTA = styled.div`
 
   p {
     font-size: 1.2rem;
-    color: rgba(255, 255, 255, 0.7);
+    color: #ccc;
     margin-bottom: 2.5rem;
     max-width: 600px;
     margin-inline: auto;
   }
 
   button {
-    background: var(--brand-color);
-    color: white;
+    background: var(--neon-cyan);
+    color: black;
     border: none;
     padding: 1rem 3.5rem;
     font-size: 1rem;
@@ -102,13 +99,13 @@ export const CTA = styled.div`
     cursor: pointer;
     transition: all 0.3s ease;
     border-radius: 50px;
-    box-shadow: 0 10px 20px rgba(0,0,0,0.2);
+    box-shadow: 0 0 20px rgba(0, 243, 255, 0.4);
 
     &:hover {
       background: white;
-      color: var(--brand-color);
+      color: black;
       transform: translateY(-2px);
-      box-shadow: 0 15px 30px rgba(0,0,0,0.3);
+      box-shadow: 0 0 40px rgba(0, 243, 255, 0.8);
     }
   }
 `;
@@ -122,17 +119,16 @@ export const Links = styled.div`
 
   .contact-info {
     h4 {
-      font-size: 1.8rem;
+      font-size: 2rem;
       font-weight: 900;
       letter-spacing: -1px;
       margin-bottom: 1.5rem;
-      background: linear-gradient(45deg, var(--brand-color), var(--brand-secondary));
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
+      color: white;
+      text-shadow: 0 0 10px rgba(255,255,255,0.3);
     }
 
     p {
-      color: rgba(255, 255, 255, 0.6);
+      color: #aaa;
       line-height: 1.8;
       font-size: 1rem;
 
@@ -142,7 +138,8 @@ export const Links = styled.div`
         transition: color 0.3s;
         
         &:hover {
-          color: var(--brand-color);
+          color: var(--neon-cyan);
+          text-shadow: 0 0 10px var(--neon-cyan);
         }
       }
     }
@@ -157,28 +154,15 @@ export const Links = styled.div`
       font-weight: 600;
       text-transform: uppercase;
       letter-spacing: 1px;
-      color: rgba(255, 255, 255, 0.8);
+      color: #aaa;
       text-decoration: none;
       position: relative;
-      transition: color 0.3s;
+      transition: all 0.3s;
       padding-bottom: 5px;
 
-      &::after {
-        content: '';
-        position: absolute;
-        bottom: 0;
-        left: 0;
-        width: 0;
-        height: 2px;
-        background: var(--brand-color);
-        transition: width 0.3s;
-      }
-
       &:hover {
-        color: white;
-        &::after {
-          width: 100%;
-        }
+        color: var(--neon-cyan);
+        text-shadow: 0 0 10px var(--neon-cyan);
       }
     }
   }

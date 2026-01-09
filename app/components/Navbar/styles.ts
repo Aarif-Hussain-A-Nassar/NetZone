@@ -3,32 +3,40 @@ import { motion } from "framer-motion";
 
 export const Container = styled(motion.header)`
   position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  padding: 1.2rem 10%;
-  box-sizing: border-box; /* Fix for 100% + padding overflow */
+  top: 20px; /* Floating effect */
+  left: 50%;
+  transform: translateX(-50%) !important; /* Force center for fixed element */
+  width: 90%;
+  max-width: 1400px;
+  padding: 0.8rem 2rem;
+  box-sizing: border-box;
   display: flex;
   justify-content: space-between;
   align-items: center;
   z-index: 1000;
+  border-radius: 16px;
 
-  /* Reference Style: Clean, Professional, Full Width */
-  background: rgba(255, 255, 255, 0.95);
-  backdrop-filter: blur(12px);
-  -webkit-backdrop-filter: blur(12px);
-  border-bottom: 1px solid rgba(0,0,0,0.05);
-  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.03);
+  /* Glassmorphism - Classic Professional */
+  background: var(--glass-bg);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid var(--glass-border);
+  box-shadow: var(--glass-shadow);
 
   transition: all 0.3s ease;
 
   &.scrolled {
-    padding: 0.8rem 5%;
-    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+    width: 95%;
+    top: 10px;
+    background: rgba(5, 5, 20, 0.8);
+    border-color: rgba(255, 255, 255, 0.1);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
   }
 
   @media (max-width: 768px) {
-    padding: 1rem 5%;
+    width: 95%;
+    top: 10px;
+    padding: 0.8rem 1.5rem;
   }
 
   .logo {
@@ -36,10 +44,10 @@ export const Container = styled(motion.header)`
     align-items: center;
     
     h1 {
-      font-size: 1.6rem;
+      font-size: 1.5rem;
       font-weight: 800;
       margin: 0;
-      color: #1a1a1a; /* Always dark for readability on white */
+      color: var(--foreground); /* Fixed: Was white, invisible on light bg */
       letter-spacing: -1px;
       text-transform: uppercase;
       font-family: 'Inter', sans-serif;
@@ -47,74 +55,77 @@ export const Container = styled(motion.header)`
       line-height: 1;
 
       span {
-        color: var(--brand-secondary);
-        background: linear-gradient(45deg, var(--brand-color), var(--brand-secondary));
+        background: var(--brand-gradient);
         -webkit-background-clip: text;
         -webkit-text-fill-color: transparent;
+        text-shadow: none;
       }
+    }
+  }
+
+  .call-btn {
+    background: var(--brand-purple); /* Solid fallback */
+    background: var(--brand-gradient);
+    color: white !important; /* Force white text */
+    border: none;
+    padding: 0.7rem 1.4rem; /* Slightly larger */
+    border-radius: 8px;
+    font-weight: 700;
+    font-size: 0.9rem;
+    cursor: pointer;
+    text-transform: uppercase;
+    box-shadow: 0 4px 15px rgba(107, 45, 135, 0.4);
+    white-space: nowrap;
+    opacity: 1; 
+    display: inline-flex; /* Explicit display */
+    align-items: center;
+    justify-content: center;
+    z-index: 1005; /* High Z-index */
+    
+    &:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 6px 20px rgba(107, 45, 135, 0.5);
+    }
+
+    /* Only hide on mobile if strictly needed, but user said 'not visible' which implies usually desktop too */
+    @media (max-width: 600px) {
+      display: none; 
     }
   }
 
   .desktop-nav {
     display: flex;
     align-items: center;
-    gap: 2rem;
-    position: absolute;
-    left: 50%;
-    transform: translateX(-50%);
-
+    gap: 0.5rem;
+    
     @media (max-width: 900px) {
       display: none;
     }
 
     .nav-link {
       position: relative;
-      color: #333;
-      font-weight: 700;
+      color: var(--foreground);
+      font-weight: 600;
       font-size: 0.9rem;
       text-decoration: none;
       text-transform: uppercase;
       letter-spacing: 0.5px;
       transition: color 0.3s;
-      padding: 0.5rem 0;
+      padding: 0.6rem 1.2rem;
+      border-radius: 8px;
+      z-index: 1;
 
       &:hover {
-        color: var(--brand-color);
+        color: var(--brand-secondary);
       }
 
-      /* Animated underscore */
-      &::after {
-        content: '';
+      .hover-bg {
         position: absolute;
-        bottom: 0;
-        left: 0;
-        width: 0;
-        height: 2px;
-        background: var(--brand-color);
-        transition: width 0.3s ease;
-      }
-
-      &:hover::after {
-        width: 100%;
-      }
-
-      /* Special CTA Style for the last item (Contact) */
-      &:last-child {
-        background: var(--brand-color);
-        color: white;
-        padding: 0.6rem 1.8rem;
-        border-radius: 4px;
-        transition: all 0.3s ease;
-        
-        &::after {
-          display: none;
-        }
-
-        &:hover {
-          background: #00A68A; /* Slightly darker teal */
-          transform: translateY(-2px);
-          box-shadow: 0 5px 15px rgba(0, 201, 167, 0.3);
-        }
+        inset: 0;
+        background: rgba(255, 255, 255, 0.1);
+        border-radius: 8px;
+        z-index: -1;
+        border: 1px solid rgba(255, 255, 255, 0.1);
       }
     }
   }
@@ -125,24 +136,23 @@ export const Container = styled(motion.header)`
     gap: 1.5rem;
   }
 
-  /* Simplified Toggle for Corporate Look */
   .theme-toggle {
     width: 48px;
     height: 26px;
-    background: #e2e8f0; 
+    background: var(--card-border); 
     border-radius: 50px;
     display: flex;
     align-items: center;
     padding: 2px;
     cursor: pointer;
-    border: 1px solid rgba(0,0,0,0.05);
+    border: 1px solid var(--glass-border);
 
     .toggle-handle {
       width: 20px;
       height: 20px;
-      background: white;
+      background: var(--brand-secondary);
       border-radius: 50%;
-      box-shadow: 0 1px 3px rgba(0,0,0,0.2);
+      box-shadow: 0 1px 3px rgba(0,0,0,0.1);
     }
   }
 
@@ -154,6 +164,7 @@ export const Container = styled(motion.header)`
     cursor: pointer;
     width: 28px;
     height: 28px;
+    z-index: 1002;
 
     @media (max-width: 900px) {
       display: flex;
@@ -161,16 +172,17 @@ export const Container = styled(motion.header)`
 
     .bar {
       width: 100%;
-      height: 3px;
-      background: #1a1a1a;
+      height: 2px;
+      background: white;
       border-radius: 3px;
       transition: all 0.3s ease;
+      box-shadow: 0 0 5px white;
     }
 
     &.active {
-      .bar-1 { transform: translateY(8px) rotate(45deg); }
+      .bar-1 { transform: translateY(7px) rotate(45deg); }
       .bar-2 { opacity: 0; }
-      .bar-3 { transform: translateY(-8px) rotate(-45deg); }
+      .bar-3 { transform: translateY(-7px) rotate(-45deg); }
     }
   }
 `;
@@ -182,7 +194,8 @@ export const MobileMenu = styled(motion.div)`
   width: 100vw;
   height: 100vh;
   z-index: 999;
-  background: white;
+  background: rgba(3, 0, 20, 0.95);
+  backdrop-filter: blur(20px);
   padding: 2rem;
   display: flex;
   flex-direction: column;
@@ -191,24 +204,22 @@ export const MobileMenu = styled(motion.div)`
   gap: 2rem;
 
   a {
-    font-size: 1.5rem;
+    font-size: 2rem;
     font-weight: 800;
-    color: #1a1a1a;
+    color: white;
     text-decoration: none;
     text-transform: uppercase;
-    letter-spacing: 1px;
-    transition: color 0.2s;
+    letter-spacing: 2px;
+    transition: all 0.2s;
+    background: linear-gradient(to right, #fff, #aaa);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
 
     &:hover {
-      color: var(--brand-color);
-    }
-
-    /* Mobile CTA */
-    &:last-child {
-      background: var(--brand-color);
-      color: white;
-      padding: 1rem 3rem;
-      border-radius: 5px;
+      background: linear-gradient(to right, var(--neon-cyan), var(--neon-purple));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      transform: scale(1.1);
     }
   }
 `;

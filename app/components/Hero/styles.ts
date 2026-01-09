@@ -1,26 +1,37 @@
-import styled from "styled-components";
+import styled, { keyframes } from "styled-components";
 import { motion } from "framer-motion";
+
+const rotate = keyframes`
+  0% { transform: rotateX(0deg) rotateY(0deg); }
+  100% { transform: rotateX(360deg) rotateY(360deg); }
+`;
+
+const float = keyframes`
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-20px); }
+`;
 
 export const HeroSection = styled.section`
   position: relative;
-  height: 100vh;
-  min-height: 900px; /* Increased min-height to fit cards */
+  min-height: 100vh;
   width: 100%;
   display: flex;
+  flex-direction: column;
   align-items: center;
-  justify-content: flex-start;
-  padding: 0 10%;
-  padding-bottom: 10rem; /* Ensure space for overlapping cards if absolute */
+  justify-content: center;
+  padding: 8rem 10% 4rem; /* Increased padding */
   box-sizing: border-box;
-  
-  /* Placeholder Background Image - Replace with actual asset */
-  background: url('https://images.unsplash.com/photo-1558002038-1091a1661116?q=80&w=2070&auto=format&fit=crop') no-repeat center center/cover;
+  overflow: hidden;
+  gap: 4rem;
+  background: var(--background);
 
-  @media (max-width: 900px) {
-    flex-direction: column;
-    justify-content: center;
-    padding: 8rem 5% 4rem;
-    height: auto;
+  /* Subtle gradient mesh for 'modern' feel */
+  background-image: 
+    radial-gradient(circle at 15% 50%, rgba(0, 86, 179, 0.05) 0%, transparent 25%),
+    radial-gradient(circle at 85% 30%, rgba(107, 45, 135, 0.05) 0%, transparent 25%);
+
+  @media (max-width: 968px) {
+    padding: 6rem 5% 4rem;
   }
 `;
 
@@ -30,95 +41,170 @@ export const Overlay = styled.div`
   left: 0;
   width: 100%;
   height: 100%;
-  background: rgba(0, 0, 0, 0.4); /* Dark overlay for text readability */
+  pointer-events: none;
+  background: 
+    linear-gradient(to bottom, transparent 80%, var(--background) 100%),
+    url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='0.03'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
   z-index: 1;
 `;
 
-export const Content = styled.div`
-  position: relative;
+export const TopSection = styled.div`
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  max-width: 1400px;
   z-index: 2;
-  color: white;
+
+  @media (max-width: 968px) {
+    flex-direction: column;
+    justify-content: center;
+    text-align: center;
+  }
+`;
+
+export const Content = styled.div`
+  color: var(--foreground);
   max-width: 600px;
-  margin-bottom: 100px; /* Space for the cards */
 
   h1 {
-    font-size: 3.5rem;
-    font-weight: 800;
-    line-height: 1.2;
-    margin-bottom: 1.5rem;
+    font-size: 5rem;
+    font-weight: 900;
+    line-height: 1.1;
+    margin-bottom: 0;
     font-family: 'Inter', sans-serif;
-    text-transform: uppercase;
-
+    letter-spacing: -2px;
+    color: var(--brand-color);
+    
     span {
-      color: var(--brand-color);
+      color: var(--brand-purple); /* Fallback */
+      background: var(--brand-gradient);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      text-shadow: none;
     }
 
     @media (max-width: 768px) {
-      font-size: 2.5rem;
+      font-size: 3rem;
     }
   }
 `;
 
+export const ThreeDContainer = styled(motion.div)`
+  position: relative;
+  width: 300px;
+  height: 300px;
+  perspective: 1000px;
+  cursor: grab;
+  
+  &:active {
+    cursor: grabbing;
+  }
+  
+  @media (max-width: 968px) {
+    display: flex; /* Show on mobile but scaled down if needed, or keep hidden if requested. User asked for touch interaction so likely wants it shown. */
+    transform: scale(0.8);
+    margin: 2rem auto;
+  }
+
+  .cube {
+    width: 200px;
+    height: 200px;
+    position: relative;
+    transform-style: preserve-3d;
+    /* Animation handled by Framer Motion in TSX now */
+    margin: 50px auto;
+  }
+
+  .face {
+    position: absolute;
+    width: 200px;
+    height: 200px;
+    background: rgba(255, 255, 255, 0.95);
+    border: 2px solid var(--brand-purple); /* Brand Purple Border */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 24px;
+    font-weight: 800;
+    color: var(--brand-purple); /* Brand Purple Text */
+    box-shadow: 0 4px 15px rgba(107, 45, 135, 0.2);
+    user-select: none;
+    backface-visibility: hidden;
+    opacity: 0.95;
+  }
+
+  .front  { transform: rotateY(0deg) translateZ(100px); }
+  .back   { transform: rotateY(180deg) translateZ(100px); }
+  .right  { transform: rotateY(90deg) translateZ(100px); }
+  .left   { transform: rotateY(-90deg) translateZ(100px); }
+  .top    { transform: rotateX(90deg) translateZ(100px); }
+  .bottom { transform: rotateX(-90deg) translateZ(100px); }
+`;
+
 export const InfoCards = styled.div`
-  position: absolute;
-  bottom: -100px; /* Hang half-way out of the hero section */
-  left: 50%;
-  transform: translateX(-50%);
-  width: 80%;
-  max-width: 1200px;
   display: grid;
   grid-template-columns: repeat(3, 1fr);
+  gap: 2rem;
+  width: 100%;
+  max-width: 1200px;
   z-index: 10;
-  box-shadow: 0 20px 50px rgba(0,0,0,0.15);
+  position: relative; /* Normal flow */
 
-  @media (max-width: 900px) {
-    position: relative;
-    bottom: auto;
-    left: auto;
-    transform: none;
-    width: 100%;
+  @media (max-width: 968px) {
     grid-template-columns: 1fr;
-    margin-top: 4rem;
   }
 `;
 
 export const Card = styled(motion.div)`
-  background: var(--brand-color); /* Teal from globals */
-  color: white;
-  padding: 3rem 2rem;
-  text-align: center;
+  background: var(--card-bg);
+  border: 1px solid var(--card-border);
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
+  color: var(--foreground);
+  padding: 2rem;
+  border-radius: 16px;
+  text-align: left;
   display: flex;
   flex-direction: column;
-  align-items: center;
   gap: 1rem;
-  border-right: 1px solid rgba(255,255,255,0.1);
-  transition: background 0.3s ease;
-  cursor: pointer;
-
-  &:last-child {
-    border-right: none;
-  }
+  transition: all 0.3s ease;
+  overflow: hidden;
+  position: relative;
+  z-index: 2;
 
   &:hover {
-    background: #00A68A;
+    transform: translateY(-8px);
+    background: var(--brand-color); /* Turns Purple on Hover */
+    border-color: var(--brand-color);
+    box-shadow: 0 15px 30px rgba(107, 45, 135, 0.25);
+    
+    h3, p, .icon {
+      color: white !important;
+      opacity: 1;
+    }
   }
 
   .icon {
-    font-size: 3rem;
+    font-size: 2.5rem;
     margin-bottom: 0.5rem;
+    transition: color 0.3s;
+    color: var(--brand-secondary);
   }
 
   h3 {
     font-size: 1.2rem;
     font-weight: 700;
     text-transform: uppercase;
+    color: var(--brand-color);
     margin: 0;
+    transition: color 0.3s;
   }
 
   p {
     font-size: 0.9rem;
-    line-height: 1.5;
-    opacity: 0.9;
-    max-width: 250px;
+    line-height: 1.6;
+    color: var(--foreground);
+    opacity: 0.8;
+    transition: color 0.3s;
   }
 `;
