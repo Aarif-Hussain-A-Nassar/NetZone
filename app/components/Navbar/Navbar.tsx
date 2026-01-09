@@ -74,7 +74,7 @@ const Navbar: React.FC = () => {
         >
           <Link href="#home">
             <h1>
-              Next<span>Zone</span>
+              NET<span>ZONE</span>
             </h1>
           </Link>
         </motion.div>

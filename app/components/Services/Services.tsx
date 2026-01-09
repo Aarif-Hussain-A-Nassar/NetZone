@@ -5,19 +5,34 @@ import { ServicesSection, Header, ServiceGrid, ServiceCard } from "./styles";
 
 const services = [
   {
-    title: "SMART LIGHTING",
-    description: "Automate your home's lighting for convenience and energy efficiency.",
-    icon: "💡" // Placeholder
+    title: "CCTV SYSTEMS",
+    description: "High-definition surveillance cameras and monitoring systems for 24/7 security.",
+    icon: "📷"
   },
   {
-    title: "HOME SECURITY",
-    description: "State-of-the-art surveillance and alarm systems for peace of mind.",
-    icon: "📹"
+    title: "BIOMETRICS",
+    description: "Advanced fingerprint and face recognition systems for secure access control.",
+    icon: "👆"
   },
   {
-    title: "CLIMATE CONTROL",
-    description: "Smart thermostats that adapt to your lifestyle and save money.",
-    icon: "❄️"
+    title: "NETWORKING",
+    description: "Complete networking solutions, including access points and structured cabling.",
+    icon: "🌐"
+  },
+  {
+    title: "GATE AUTOMATION",
+    description: "Automatic gate systems for residential and commercial properties.",
+    icon: "🚪"
+  },
+  {
+    title: "VIDEO DOOR PHONES",
+    description: "See and speak to visitors at your door from anywhere in your home.",
+    icon: "🔔"
+  },
+  {
+    title: "LAPTOPS & PC",
+    description: "Sales, visual service, and repairs for all major computer brands.",
+    icon: "💻"
   }
 ];
 
@@ -30,14 +45,14 @@ const Services = () => {
           whileInView={{ y: 0, opacity: 1 }}
           transition={{ duration: 0.6 }}
         >
-          HAMI TECHNOLOGIES
+          OUR SERVICES
         </motion.h2>
         <motion.p
            initial={{ y: 20, opacity: 0 }}
            whileInView={{ y: 0, opacity: 1 }}
            transition={{ duration: 0.6, delay: 0.2 }}
         >
-          We bring the future to your doorstep with cutting-edge smart home integration.
+          Sales & Service Installation for all your technology needs.
         </motion.p>
       </Header>
 

@@ -47,7 +47,10 @@ export const Container = styled(motion.header)`
       line-height: 1;
 
       span {
-        color: var(--brand-color);
+        color: var(--brand-secondary);
+        background: linear-gradient(45deg, var(--brand-color), var(--brand-secondary));
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
       }
     }
   }

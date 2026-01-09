@@ -13,10 +13,9 @@ const Hero = () => {
           animate={{ y: 0, opacity: 1 }}
           transition={{ duration: 0.8 }}
         >
-          WE TURN <br />
-          SPACES INTO <br />
-          <span>SMART</span> <br />
-          EXPERIENCES.
+          NETZONE <br />
+          <span>THE COMPLETE</span> <br />
+          SOLUTION <br />
         </motion.h1>
       </Content>
 
@@ -26,9 +25,9 @@ const Hero = () => {
           whileInView={{ y: 0, opacity: 1 }}
           transition={{ duration: 0.5, delay: 0.2 }}
         >
-          <div className="icon">💡</div>
-          <h3>SMART LIGHTING</h3>
-          <p>Control the ambiance of your home with intelligent lighting solutions.</p>
+          <div className="icon">📹</div>
+          <h3>CCTV & SECURITY</h3>
+          <p>Advanced surveillance and biometrics for complete peace of mind.</p>
         </Card>
 
         <Card
@@ -36,9 +35,9 @@ const Hero = () => {
           whileInView={{ y: 0, opacity: 1 }}
           transition={{ duration: 0.5, delay: 0.4 }}
         >
-          <div className="icon">🔒</div>
-          <h3>HOME SECURITY</h3>
-          <p>Keep your family safe with advanced smart security systems.</p>
+          <div className="icon">🌐</div>
+          <h3>NETWORKING</h3>
+          <p>Robust networking solutions, access points, and structured cabling.</p>
         </Card>
 
         <Card
@@ -46,9 +45,9 @@ const Hero = () => {
           whileInView={{ y: 0, opacity: 1 }}
           transition={{ duration: 0.5, delay: 0.6 }}
         >
-          <div className="icon">🎬</div>
-          <h3>AUDIO / VIDEO</h3>
-          <p>Immersive entertainment experiences customized for every room.</p>
+          <div className="icon">🏠</div>
+          <h3>HOME AUTOMATION</h3>
+          <p>Smart home features, gate automation, and video door phones.</p>
         </Card>
       </InfoCards>
     </HeroSection>
