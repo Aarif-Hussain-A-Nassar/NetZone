@@ -27,7 +27,8 @@ export const Header = styled.div`
 
   p {
     font-size: 1.1rem;
-    color: #666;
+    color: var(--foreground);
+    opacity: 0.7;
     max-width: 600px;
     margin: 0 auto;
     line-height: 1.6;
@@ -45,7 +46,7 @@ export const ServiceGrid = styled.div`
 `;
 
 export const ServiceCard = styled(motion.div)`
-  background: #f8f9fa; /* Light grey card bg */
+  background: var(--card-bg);
   padding: 3rem 2rem;
   border-radius: 8px; /* Slight rounding, reference is quite boxy though */
   text-align: center;
@@ -67,7 +68,8 @@ export const ServiceCard = styled(motion.div)`
   }
 
   p {
-    color: #555;
+    color: var(--foreground);
+    opacity: 0.8;
     margin-bottom: 2rem;
     line-height: 1.6;
   }
@@ -88,3 +90,4 @@ export const ServiceCard = styled(motion.div)`
     }
   }
 `;
+
