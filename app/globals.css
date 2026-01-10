@@ -22,6 +22,9 @@
   --glass-bg: rgba(255, 255, 255, 0.9);
   --glass-border: 1px solid rgba(0, 0, 0, 0.05);
   --glass-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
+
+  --neon-cyan: #00f3ff;
+  --neon-purple: #bc13fe;
 }
 
 .dark {
@@ -35,7 +38,7 @@
   /* Lighter purple for dark mode contrast */
   --brand-secondary: #A2D43D;
 
-  --glass-bg: rgba(26, 26, 26, 0.9);
+  --glass-bg: rgba(0, 0, 0, 0.9);
   --glass-border: 1px solid rgba(255, 255, 255, 0.1);
   --glass-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
 }

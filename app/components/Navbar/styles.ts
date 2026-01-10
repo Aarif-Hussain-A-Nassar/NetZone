@@ -1,7 +1,7 @@
 import styled from "styled-components";
 import { motion } from "framer-motion";
 
-export const Container = styled(motion.header)`
+export const Container = styled(motion.header) <{ $isLight: boolean }>`
   position: fixed;
   top: 20px; /* Floating effect */
   left: 50%;
@@ -16,21 +16,22 @@ export const Container = styled(motion.header)`
   z-index: 1000;
   border-radius: 16px;
 
-  /* Glassmorphism - Classic Professional */
-  background: var(--glass-bg);
+  /* Theme Logic based on Prop */
+  background: ${props => props.$isLight ? '#ffffff' : '#000000'};
   backdrop-filter: blur(16px);
   -webkit-backdrop-filter: blur(16px);
-  border: 1px solid var(--glass-border);
-  box-shadow: var(--glass-shadow);
+  border: 1px solid ${props => props.$isLight ? 'rgba(0, 0, 0, 0.1)' : 'rgba(255, 255, 255, 0.1)'};
+  box-shadow: ${props => props.$isLight ? '0 4px 20px rgba(0, 0, 0, 0.05)' : '0 4px 20px rgba(0, 0, 0, 0.5)'};
 
   transition: all 0.3s ease;
 
   &.scrolled {
     width: 95%;
     top: 10px;
-    background: rgba(5, 5, 20, 0.8);
-    border-color: rgba(255, 255, 255, 0.1);
-    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+    background: ${props => props.$isLight ? '#ffffff' : '#000000'};
+    backdrop-filter: blur(20px);
+    border-color: ${props => props.$isLight ? 'rgba(0, 0, 0, 0.1)' : 'rgba(255, 255, 255, 0.1)'};
+    box-shadow: ${props => props.$isLight ? '0 10px 30px rgba(0, 0, 0, 0.1)' : '0 10px 30px rgba(0, 0, 0, 0.5)'};
   }
 
   @media (max-width: 768px) {
@@ -42,12 +43,31 @@ export const Container = styled(motion.header)`
   .logo {
     display: flex;
     align-items: center;
+    overflow: hidden; /* For cropping adjustment */
     
+    img {
+      display: block;
+      /* Remove all blend modes to ensure consistent visibility */
+      mix-blend-mode: normal !important;
+      
+      /* Visual trimming/cropping of the logo image by scaling it up */
+      /* This zooms in to cut off the excess background padding in the image file */
+      transform: scale(1.3); 
+    }
+
+    /* Dark Mode styling */
+    :global(.dark) & img {
+      mix-blend-mode: normal !important;
+      filter: none;
+    }
+
     h1 {
       font-size: 1.5rem;
       font-weight: 800;
+      font-weight: 800;
+      font-weight: 800;
       margin: 0;
-      color: var(--foreground); /* Fixed: Was white, invisible on light bg */
+      color: ${props => props.$isLight ? 'var(--foreground)' : '#ffffff'};
       letter-spacing: -1px;
       text-transform: uppercase;
       font-family: 'Inter', sans-serif;
@@ -104,7 +124,7 @@ export const Container = styled(motion.header)`
 
     .nav-link {
       position: relative;
-      color: var(--foreground);
+      color: ${props => props.$isLight ? 'var(--foreground)' : '#ffffff'};
       font-weight: 600;
       font-size: 0.9rem;
       text-decoration: none;
@@ -115,17 +135,20 @@ export const Container = styled(motion.header)`
       border-radius: 8px;
       z-index: 1;
 
+      /* Hover color change removed as requested */
+      /* Hover color change removed as requested */
+      /* Hover effects based on theme */
       &:hover {
-        color: var(--brand-secondary);
+        color: ${props => props.$isLight ? 'var(--brand-purple)' : '#ffffff'} !important;
       }
 
       .hover-bg {
         position: absolute;
         inset: 0;
-        background: rgba(255, 255, 255, 0.1);
+        background: transparent; /* User requested no background change on hover */
         border-radius: 8px;
         z-index: -1;
-        border: 1px solid rgba(255, 255, 255, 0.1);
+        border: none;
       }
     }
   }
@@ -139,13 +162,13 @@ export const Container = styled(motion.header)`
   .theme-toggle {
     width: 48px;
     height: 26px;
-    background: var(--card-border); 
+    background: ${props => props.$isLight ? 'rgba(0, 0, 0, 0.05)' : 'rgba(255, 255, 255, 0.1)'};
     border-radius: 50px;
     display: flex;
     align-items: center;
     padding: 2px;
     cursor: pointer;
-    border: 1px solid var(--glass-border);
+    border: 1px solid ${props => props.$isLight ? 'rgba(0, 0, 0, 0.1)' : 'rgba(255, 255, 255, 0.2)'};
 
     .toggle-handle {
       width: 20px;
@@ -173,10 +196,10 @@ export const Container = styled(motion.header)`
     .bar {
       width: 100%;
       height: 2px;
-      background: white;
+      background: ${props => props.$isLight ? 'var(--foreground)' : '#ffffff'};
       border-radius: 3px;
       transition: all 0.3s ease;
-      box-shadow: 0 0 5px white;
+      box-shadow: ${props => props.$isLight ? 'none' : '0 0 5px rgba(255, 255, 255, 0.5)'};
     }
 
     &.active {

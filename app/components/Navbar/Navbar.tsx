@@ -2,6 +2,7 @@
 
 import { useState, useEffect } from "react";
 import Link from "next/link";
+import Image from "next/image";
 import { motion, AnimatePresence } from "framer-motion";
 import { Container, MobileMenu } from "./styles";
 
@@ -61,6 +62,7 @@ const Navbar: React.FC = () => {
   return (
     <>
       <Container
+        $isLight={isLight}
         className={scrolled ? "scrolled" : ""}
         initial={{ y: -100, opacity: 0 }}
         animate={{ y: 0, opacity: 1 }}
@@ -73,9 +75,14 @@ const Navbar: React.FC = () => {
           whileTap={{ scale: 0.95 }}
         >
           <Link href="#home">
-            <h1>
-              NET<span>ZONE</span>
-            </h1>
+            <Image 
+              src={isLight ? "/logo-light.png" : "/logo-dark.png"} 
+              alt="NetZone Logo" 
+              width={140} 
+              height={50}
+              priority
+              style={{ width: 'auto', height: '40px', objectFit: 'contain' }}
+            />
           </Link>
         </motion.div>
 
