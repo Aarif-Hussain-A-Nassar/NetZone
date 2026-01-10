@@ -29,11 +29,11 @@ const Hero = () => {
             transition={{ duration: 20, repeat: Infinity, ease: "linear" }}
           >
             <div className="face front">NETZONE</div>
-            <div className="face back">SECURE</div>
-            <div className="face right">FAST</div>
-            <div className="face left">SMART</div>
-            <div className="face top">FUTURE</div>
-            <div className="face bottom">GLOBAL</div>
+            <div className="face back">NETZONE</div>
+            <div className="face right">NETZONE</div>
+            <div className="face left">NETZONE</div>
+            <div className="face top">NETZONE</div>
+            <div className="face bottom">NETZONE</div>
           </motion.div>
         </ThreeDContainer>
       </TopSection>
