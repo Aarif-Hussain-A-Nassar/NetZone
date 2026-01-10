@@ -14,9 +14,8 @@ const Hero = () => {
             animate={{ y: 0, opacity: 1 }}
             transition={{ duration: 0.8 }}
           >
-            NETZONE <br />
-            <span>FUTURE OF</span> <br />
-            SECURITY
+            NETZONE
+            <span>THE COMPLETE SOLUTION</span>
           </motion.h1>
         </Content>
 

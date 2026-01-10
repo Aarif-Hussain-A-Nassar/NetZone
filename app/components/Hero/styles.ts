@@ -65,27 +65,44 @@ export const TopSection = styled.div`
 
 export const Content = styled.div`
   color: var(--foreground);
-  max-width: 600px;
+  max-width: 800px; /* Increased width */
 
   h1 {
-    font-size: 5rem;
+    font-size: 7rem;
     font-weight: 900;
-    line-height: 1.1;
+    line-height: 0.9;
     margin-bottom: 0;
     font-family: 'Inter', sans-serif;
-    letter-spacing: -2px;
-    color: var(--brand-color);
+    letter-spacing: -4px;
+    
+    /* Gradient on the Name */
+    background: var(--brand-gradient);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
     
     span {
-      color: var(--brand-purple); /* Fallback */
-      background: var(--brand-gradient);
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-      text-shadow: none;
+      display: block;
+      font-size: 1.5rem;
+      letter-spacing: 0.2em; /* Wide spacing for premium feel */
+      font-weight: 500;
+      color: var(--foreground);
+      margin-top: 1.5rem;
+      
+      /* Reset gradient text fill for the tagline to be solid color */
+      background: none;
+      -webkit-text-fill-color: var(--foreground);
+      opacity: 0.8;
+      text-transform: uppercase;
     }
 
     @media (max-width: 768px) {
-      font-size: 3rem;
+      font-size: 3.5rem;
+      
+      span {
+        font-size: 1rem;
+        letter-spacing: 0.15em;
+        margin-top: 1rem;
+      }
     }
   }
 `;

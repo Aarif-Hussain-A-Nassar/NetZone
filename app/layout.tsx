@@ -15,7 +15,7 @@ const geistMono = Geist_Mono({
 
 export const metadata: Metadata = {
   title: "NetZone",
-  description: " Your gateway to the digital world.",
+  description: "NetZone - The Complete Solution",
 };
 
 export default function RootLayout({
