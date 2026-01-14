@@ -168,6 +168,14 @@ export const CardBack = styled(CardFace)`
     color: var(--background); /* Invert for back face if background is brand color */
     text-transform: uppercase;
     font-weight: 800;
+    margin-bottom: 1rem;
+  }
+
+  p {
+    color: var(--background);
+    font-size: 1rem;
+    line-height: 1.5;
+    opacity: 0.9;
   }
 `;
 

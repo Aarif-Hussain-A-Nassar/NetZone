@@ -175,4 +175,15 @@ export const ReviewText = styled.p`
   opacity: 0.9;
   font-style: italic;
   margin: 0;
+
+  .project-highlight {
+    font-weight: 600;
+    font-style: normal;
+    color: var(--brand-color);
+    display: block;
+    margin-bottom: 0.5rem;
+    font-size: 0.95rem;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+  }
 `;

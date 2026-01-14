@@ -44,7 +44,7 @@ const Hero = () => {
           transition={{ duration: 0.5, delay: 0.2 }}
         >
           <div className="icon">📹</div>
-          <h3>CCTV & AI</h3>
+          <h3>CCTV SYSTEMS</h3>
           <p>Next-gen surveillance with predictive analysis.</p>
         </Card>
 
@@ -54,7 +54,7 @@ const Hero = () => {
           transition={{ duration: 0.5, delay: 0.4 }}
         >
           <div className="icon">🌐</div>
-          <h3>HYPER-NET</h3>
+          <h3>NETWORKING</h3>
           <p>Ultra-low latency networking for the modern era.</p>
         </Card>
 
@@ -64,8 +64,9 @@ const Hero = () => {
           transition={{ duration: 0.5, delay: 0.6 }}
         >
           <div className="icon">🏠</div>
-          <h3>SMART LIVE</h3>
-          <p>Fully automated environments responding to you.</p>
+          <h3>BIOMETRIC SYSTEMS</h3>
+<p>Secure access control using advanced biometric authentication.</p>
+
         </Card>
       </InfoCards>
     </HeroSection>

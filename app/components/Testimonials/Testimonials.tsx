@@ -1,45 +1,43 @@
 "use client";
 
 import React from "react";
-import Image from "next/image";
 import { TestimonialSection, Grid, Card, Header, UserInfo, ReviewText } from "./styles";
 
 const testimonials = [
   {
     id: 1,
-    name: "John Doe",
-    role: "CEO, TechCorp",
-    text: "NetZone transformed our digital presence completely. Their attention to detail and premium design aesthetic is unmatched in the industry.",
-    // Using placeholder avatar service or a div fallback in styles
-    image: "https://i.pravatar.cc/150?u=1",
+    name: "Riyas shajahan",
+    role: "Paravoor",
+    text: "Tplink ip cameras installation.",
+    feedback: "NetZone's installation was quick and professional. The camera clarity is excellent, and the remote viewing setup works flawlessly."
   },
   {
     id: 2,
-    name: "Sarah Smith",
-    role: "Founder, CreativeStudio",
-    text: "The team at NetZone is simply phenomenal. They understood our brand vision perfectly and delivered a website that truly WOWs our clients.",
-    image: "https://i.pravatar.cc/150?u=2",
+    name: "Sreekumar sir",
+    role: "Rf exports company",
+    text: "Biometric installation and door access (Device, ai face Jupiter, ai face Magnum).",
+    feedback: "The AI-based access control has streamlined our employee attendance perfectly. A highly secure and efficient solution for our company."
   },
   {
     id: 3,
-    name: "Michael Brown",
-    role: "CTO, NextLevel Systems",
-    text: "Technical expertise meets stunning design. The seamless responsiveness and smooth animations have significantly increased our user engagement.",
-    image: "https://i.pravatar.cc/150?u=3",
+    name: "Shelton",
+    role: "Aroor pally",
+    text: "Solar camera and wifi camera installation.",
+    feedback: "I needed a solution without messy wiring, and their solar camera setup was perfect. Great connectivity and reliable performance."
   },
   {
     id: 4,
-    name: "Emily Davis",
-    role: "Marketing Director, Brandify",
-    text: "We needed a site that stood out, and NetZone delivered. The 'pitch black' dark mode is a fan favorite among our developers!",
-    image: "https://i.pravatar.cc/150?u=4",
+    name: "Dr Niyas",
+    role: "JUZO shop, KOTTAYAM",
+    text: "Cctv, networking, pc and printer.",
+    feedback: "A complete one-stop solution for our shop. From networking to CCTV, everything was set up perfectly. Highly recommended for business IT needs."
   },
   {
     id: 5,
-    name: "David Wilson",
-    role: "Product Manager, InnovateX",
-    text: "Fast, reliable, and absolutely gorgeous. Working with NetZone was the best decision we made for our Q4 launch. Highly recommended.",
-    image: "https://i.pravatar.cc/150?u=5",
+    name: "Indiqube spaces limited",
+    role: "Vyshak",
+    text: "Sensinova nano 16 microwave sensor installation.",
+    feedback: "The sensor installation was precise and has greatly improved our facility's automation. Very knowledgeable and technical team."
   },
 ];
 
@@ -67,22 +65,15 @@ const Testimonials: React.FC = () => {
             whileHover={{ scale: 1.02 }}
           >
             <UserInfo>
-              <div className="avatar">
-                <Image 
-                    src={item.image} 
-                    alt={item.name} 
-                    width={60} 
-                    height={60}
-                    unoptimized // For external pravatar images
-                />
-              </div>
               <div className="details">
                 <h4>{item.name}</h4>
                 <span>{item.role}</span>
               </div>
             </UserInfo>
             <ReviewText>
-              {item.text}
+              <span className="project-highlight">{item.text}</span>
+              <br /><br />
+              "{item.feedback}"
             </ReviewText>
           </Card>
         ))}
