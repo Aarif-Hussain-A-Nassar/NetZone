@@ -64,8 +64,14 @@ export const CardWrapper = styled(motion.div)`
   cursor: pointer;
   z-index: 1;
 
-  &:hover {
-    z-index: 10;
+  @media (max-width: 900px) {
+    position: sticky;
+    top: 20vh;
+    margin-bottom: 25vh; /* Large margin to allow scrolling time before next card covers */
+    height: auto;
+    min-height: 400px; /* Ensure cards are tall enough to cover */
+    width: 100%;
+    background-color: transparent;
   }
 `;
 
@@ -96,6 +102,13 @@ const CardFace = styled.div`
   box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.05);
   
   transition: all 0.3s ease;
+
+  @media (max-width: 900px) {
+      /* Ensure full opacity on mobile to cover stacked cards */
+      background: #050511; /* Or use a solid version of var(--card-bg) */
+      backdrop-filter: none;
+      border: 1px solid rgba(255, 255, 255, 0.1);
+  }
 `;
 
 export const CardFront = styled(CardFace)`

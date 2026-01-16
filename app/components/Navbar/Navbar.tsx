@@ -111,7 +111,7 @@ const Navbar: React.FC = () => {
         {/* RIGHT SECTION */}
         <div className="right-section">
           {/* Call Us Now Button */}
-          <Link href="tel:+1234567890" style={{ textDecoration: 'none' }}>
+          <Link href="tel:+91 9633 292 607" style={{ textDecoration: 'none' }}>
             <motion.button
               className="call-btn"
               whileHover={{ scale: 1.05 }}
