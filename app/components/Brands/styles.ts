@@ -105,3 +105,16 @@ export const BrandItem = styled.div`
                 0 10px 10px -5px rgba(0, 0, 0, 0.04);
   }
 `;
+
+export const BrandLogo = styled.img`
+  height: 80px;
+  width: auto;
+  min-width: 140px;
+  max-width: 220px;
+  object-fit: contain;
+  transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+
+  ${BrandItem}:hover & {
+    transform: scale(1.1);
+  }
+`;
