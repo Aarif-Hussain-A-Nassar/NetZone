@@ -17,17 +17,17 @@ import {
 const projects = [
   {
     id: "01",
-    title: "Smart City Grid",
-    category: "CCTV & Surveillance",
-    description: "A city-wide integrated surveillance network ensuring 24/7 public safety with AI-powered analytics and remote monitoring centers.",
-    image: "https://images.unsplash.com/photo-1550751827-4bd374c3f58b?q=80&w=2070&auto=format&fit=crop"
+    title: "Chapter.1 Fitness",
+    category: "Biometric Installation",
+    description: "Installation of the eSSL AI Face Magnum biometric system at Chapter.1 Fitness Eramallor, ensuring exclusive and secure access for subscribed members only.",
+    image: "https://images.unsplash.com/photo-1534438327276-14e5300c3a48?q=80&w=1470&auto=format&fit=crop"
   },
   {
     id: "02",
-    title: "Apex Tech Park",
-    category: "Biometrics & Access",
-    description: "High-security biometric access control implementation for a 5000+ employee technology campus, featuring retina scanning and contactless entry.",
-    image: "https://images.unsplash.com/photo-1558002038-1091a1661f1d?q=80&w=2080&auto=format&fit=crop"
+    title: "Idcube",
+    category: "Automation & Lighting",
+    description: "Deployed Sensinova motion sensors at Idcube Identification Systems Pvt. Ltd., Palarivattom, to detect movement and automatically control lighting—enhancing energy efficiency, reducing power consumption, and improving user convenience.",
+    image: "https://images.unsplash.com/photo-1497366216548-37526070297c?q=80&w=1469&auto=format&fit=crop"
   },
   {
     id: "03",

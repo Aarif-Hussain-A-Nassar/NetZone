@@ -72,8 +72,7 @@ const Testimonials: React.FC = () => {
             </UserInfo>
             <ReviewText>
               <span className="project-highlight">{item.text}</span>
-              <br /><br />
-              "{item.feedback}"
+              <span className="feedback-text">"{item.feedback}"</span>
             </ReviewText>
           </Card>
         ))}

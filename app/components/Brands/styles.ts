@@ -1,8 +1,8 @@
 import styled, { keyframes } from "styled-components";
 
 const scrollLeftToRight = keyframes`
-  0% { transform: translateX(-50%); }
-  100% { transform: translateX(0); }
+  0% { transform: translate3d(0, 0, 0); }
+  100% { transform: translate3d(-25%, 0, 0); }
 `;
 
 export const BrandsSection = styled.section`
@@ -59,8 +59,11 @@ export const MarqueeContainer = styled.div`
 
 export const Track = styled.div`
   display: inline-flex;
-  gap: 2rem;
   animation: ${scrollLeftToRight} 60s linear infinite;
+  will-change: transform;
+  transform: translateZ(0); /* Hardware acceleration */
+  backface-visibility: hidden;
+  perspective: 1000px;
   
   /* Pause on hover */
   &:hover {
@@ -69,7 +72,6 @@ export const Track = styled.div`
   
   @media (max-width: 768px) {
     animation-duration: 40s;
-    gap: 1rem;
   }
 `;
 
@@ -83,7 +85,16 @@ export const BrandItem = styled.div`
   border-radius: 1rem;
   min-width: 200px;
   
-  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  margin-right: 2rem;
+  @media (max-width: 768px) {
+    margin-right: 1rem;
+  }
+  
+  transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1), 
+              box-shadow 0.3s cubic-bezier(0.4, 0, 0.2, 1),
+              background-color 0.3s ease,
+              border-color 0.3s ease,
+              color 0.3s ease;
   cursor: pointer;
   user-select: none;
   
@@ -92,7 +103,13 @@ export const BrandItem = styled.div`
   justify-content: center;
   white-space: nowrap;
   
-  /* Card Shadow */
+  /* Hardware acceleration & Performance optimization */
+  backface-visibility: hidden;
+  transform: translateZ(0);
+  perspective: 1000px;
+  contain: content;
+
+  /* Card Shadow - Optimized */
   box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 
               0 2px 4px -1px rgba(0, 0, 0, 0.06);
 
@@ -100,7 +117,7 @@ export const BrandItem = styled.div`
     color: var(--brand-purple);
     border-color: var(--brand-purple);
     background: var(--background);
-    transform: translateY(-5px);
+    transform: translateY(-5px) translateZ(0);
     box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 
                 0 10px 10px -5px rgba(0, 0, 0, 0.04);
   }

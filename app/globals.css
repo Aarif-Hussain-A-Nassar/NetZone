@@ -7,8 +7,9 @@
   --background: #ffffff;
   --foreground: #171717;
   /* Soft black for text */
-  --card-bg: #f8f9fa;
-  --card-border: #e9ecef;
+  --card-bg: #ffffff;
+  --card-border: #d4d4d8; /* Zinc-300 for visible border */
+  --card-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.15), 0 2px 4px -1px rgba(0, 0, 0, 0.08);
 
   /* Official Brand Colors */
   --brand-purple: #6B2D87;

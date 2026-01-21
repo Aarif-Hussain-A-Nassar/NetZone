@@ -79,22 +79,26 @@ export const Grid = styled.div`
 `;
 
 export const Card = styled(motion.div)`
-  background: var(--card-bg); /* Uses theme variable */
+  background: var(--card-bg);
   border: 1px solid var(--card-border);
-  padding: 2.5rem;
-  border-radius: 20px;
+  padding: 3rem;
+  border-radius: 1.5rem;
   position: relative;
-  transition: all 0.3s ease;
-  backdrop-filter: blur(10px);
-  -webkit-backdrop-filter: blur(10px);
-  box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+  transition: all 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
+  box-shadow: var(--card-shadow);
+  overflow: hidden;
 
-  /* Hover Lift & Color Change */
+  /* Premium Hover Effect */
   &:hover {
-    transform: translateY(-10px);
-    box-shadow: 0 20px 40px rgba(0,0,0,0.1);
+    transform: translateY(-8px);
+    box-shadow: 0 20px 40px -10px rgba(0,0,0,0.15);
     border-color: var(--brand-purple);
-    background: rgba(107, 45, 135, 0.05); /* Slight purple tint on hover */
+
+    &::after {
+      color: var(--brand-purple);
+      opacity: 0.15;
+      transform: translateY(-5px) scale(1.1);
+    }
   }
 
   /* Valid for 5 items: Center the 5th item */
@@ -105,45 +109,39 @@ export const Card = styled(motion.div)`
     width: 100%;
   }
 
-  /* Quote Icon */
+  /* Large Quote Watermark */
   &::after {
     content: '"';
     position: absolute;
     top: 1rem;
     right: 2rem;
-    font-size: 6rem;
+    font-size: 8rem;
     font-family: serif;
-    color: var(--brand-purple);
-    opacity: 0.1;
+    color: var(--foreground);
+    opacity: 0.05;
     line-height: 1;
-  }
-
-  /* Dark mode specific override if needed */
-  :global(.dark) & {
-    background: rgba(255, 255, 255, 0.03);
-    border: 1px solid rgba(255, 255, 255, 0.1);
-
-    &:hover {
-      background: rgba(162, 212, 61, 0.05); /* Slight green tint on hover in dark mode */
-      border-color: var(--brand-green);
-    }
+    transition: all 0.4s ease;
+    pointer-events: none;
   }
 `;
 
 export const UserInfo = styled.div`
   display: flex;
   align-items: center;
-  gap: 1rem;
-  margin-bottom: 1.5rem;
+  gap: 1.2rem;
+  margin-bottom: 2rem;
+  border-bottom: 1px solid var(--card-border);
+  padding-bottom: 1.5rem;
 
   .avatar {
-    width: 60px;
-    height: 60px;
+    width: 64px;
+    height: 64px;
     border-radius: 50%;
-    background: linear-gradient(135deg, #ccc, #999);
+    background: linear-gradient(135deg, #e5e5e5, #f5f5f5);
     position: relative;
     overflow: hidden;
-    border: 2px solid var(--brand-purple);
+    border: 3px solid #fff;
+    box-shadow: 0 4px 6px rgba(0,0,0,0.1);
     
     img {
       width: 100%;
@@ -155,35 +153,49 @@ export const UserInfo = styled.div`
   .details {
     h4 {
       margin: 0;
-      font-size: 1.1rem;
+      font-size: 1.2rem;
       font-weight: 700;
       color: var(--foreground);
+      margin-bottom: 0.2rem;
     }
 
     span {
+      display: block;
       font-size: 0.9rem;
       color: var(--brand-secondary);
-      font-weight: 500;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
     }
   }
 `;
 
 export const ReviewText = styled.p`
-  font-size: 1rem;
-  line-height: 1.6;
+  font-size: 1.05rem;
+  line-height: 1.7;
   color: var(--foreground);
-  opacity: 0.9;
-  font-style: italic;
+  opacity: 0.8;
   margin: 0;
+  font-family: 'Inter', sans-serif;
 
   .project-highlight {
-    font-weight: 600;
+    font-weight: 700;
     font-style: normal;
-    color: var(--brand-color);
-    display: block;
-    margin-bottom: 0.5rem;
-    font-size: 0.95rem;
+    color: var(--brand-purple);
+    display: inline-block;
+    margin-bottom: 1rem;
+    font-size: 0.9rem;
     text-transform: uppercase;
-    letter-spacing: 0.5px;
+    letter-spacing: 1px;
+    background: rgba(107, 45, 135, 0.05); /* very light purple bg */
+    padding: 0.4rem 1rem;
+    border-radius: 50px;
+    border: 1px solid rgba(107, 45, 135, 0.1);
+  }
+  
+  .feedback-text {
+    display: block;
+    margin-top: 0.5rem;
+    font-style: italic;
   }
 `;
