@@ -36,13 +36,7 @@ const projects = [
     description: "Complete luxury home automation system controlling lighting, climate, curtains, and security through a unified voice-activated interface.",
     image: "https://images.unsplash.com/photo-1558036117-15ea630884d5?q=80&w=2000&auto=format&fit=crop"
   },
-  {
-    id: "04",
-    title: "Skyline Tower",
-    category: "Enterprise Networking",
-    description: "Infrastructure groundwork and structured cabling for a 50-story commercial skyscraper, delivering 10Gbps connectivity to all tenants.",
-    image: "https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?q=80&w=2070&auto=format&fit=crop"
-  }
+
 ];
 
 const ProjectItem = ({ project, index }: { project: any, index: number }) => {
