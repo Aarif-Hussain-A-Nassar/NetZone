@@ -30,7 +30,7 @@ const projects = [
     image: "https://images.unsplash.com/photo-1497366216548-37526070297c?q=80&w=1469&auto=format&fit=crop"
   },
   {
-    id: "04",
+    id: "03",
     title: "RF Exports",
     category: "Biometric & Access Control",
     description: "Installation of eSSL biometric systems for attendance tracking and door access control at RF Exports, Eramallor.",
