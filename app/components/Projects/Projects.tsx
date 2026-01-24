@@ -30,11 +30,11 @@ const projects = [
     image: "https://images.unsplash.com/photo-1497366216548-37526070297c?q=80&w=1469&auto=format&fit=crop"
   },
   {
-    id: "03",
-    title: "The Glass Villa",
-    category: "Home Automation",
-    description: "Complete luxury home automation system controlling lighting, climate, curtains, and security through a unified voice-activated interface.",
-    image: "https://images.unsplash.com/photo-1558036117-15ea630884d5?q=80&w=2000&auto=format&fit=crop"
+    id: "04",
+    title: "RF Exports",
+    category: "Biometric & Access Control",
+    description: "Installation of eSSL biometric systems for attendance tracking and door access control at RF Exports, Eramallor.",
+    image: "https://images.unsplash.com/photo-1555421689-491a97ff2040?q=80&w=1470&auto=format&fit=crop"
   },
 
 ];
