@@ -19,7 +19,6 @@ const brands: Brand[] = [
   { name: "Cea Automation", logo: "/brands/cea-automation.jpg" },
   { name: "Panasonic", logo: "/brands/panasonic.png" },
   { name: "Matrix", logo: "/brands/matrix.png" },
-  { name: "Crystal", logo: "/brands/crystal.png" },
   { name: "Netgear", logo: "/brands/netgear.png" },
   { name: "Yale", logo: "/brands/yale.png" },
   { name: "Ozone", logo: "/brands/ozone.png" },
@@ -28,7 +27,10 @@ const brands: Brand[] = [
   { name: "Sensinova", logo: "/brands/sensinova.png" },
   { name: "Prama", logo: "/brands/prama.png" },
   { name: "eSSL", logo: "/brands/essl.jpg" },
-  { name: "Cisco", logo: "/brands/cisco.jpg" }
+  { name: "Cisco", logo: "/brands/cisco.jpg" },
+  { name: "Candle", logo: "/brands/candle.png" },
+  { name: "Crystal", logo: "/brands/crystal.png" },
+  { name: "EZVIZ", logo: "/brands/ezviz.png" }
 ];
 
 const Brands: React.FC = () => {

@@ -32,7 +32,12 @@ const Footer = () => {
 
         <Links>
           <div className="contact-info">
-            <h4 style={{ marginBottom: '2rem', color: 'var(--brand-secondary)' }}>NETZONE</h4>
+            <h4 style={{ marginBottom: '2rem', color: 'var(--brand-secondary)' }}>
+              NETZONE
+              <span style={{ display: 'block', fontSize: '0.7rem', fontWeight: 400, letterSpacing: '3px', marginTop: '0.2rem', color: 'var(--foreground)', opacity: 0.7, textTransform: 'uppercase' }}>
+                THE COMPLETE SOLUTION
+              </span>
+            </h4>
             <ContactList>
               <ContactItem>
                 <Icons.MapPin />

@@ -26,7 +26,7 @@ const projects = [
     id: "02",
     title: "Indiqube",
     category: "Automation & Lighting",
-    description: "Deployed Sensinova motion sensors at Indiqube Identification Systems Pvt. Ltd., Palarivattom, to detect movement and automatically control lighting—enhancing energy efficiency, reducing power consumption, and improving user convenience.",
+    description: "Deployed Sensinova motion sensors at IndiQube Paradise Pvt. Ltd., Palarivattom, to detect movement and automatically control lighting—enhancing energy efficiency, reducing power consumption, and improving user convenience.",
     image: "https://images.unsplash.com/photo-1497366216548-37526070297c?q=80&w=1469&auto=format&fit=crop"
   },
   {
