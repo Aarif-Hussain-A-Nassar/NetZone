@@ -9,9 +9,12 @@ import Brands from "./components/Brands/Brands";
 import Contact from "./components/Contact/Contact";
 import Footer from "./components/Footer/Footer";
 
+import IntroLoader from "./components/IntroLoader/IntroLoader";
+
 export default function Home() {
   return (
     <main>
+      <IntroLoader />
       <Navbar />
       <Hero />
       <Projects />
