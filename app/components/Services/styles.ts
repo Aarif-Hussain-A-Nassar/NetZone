@@ -50,26 +50,28 @@ export const Header = styled.div`
 export const ServiceGrid = styled.div`
   display: grid;
   grid-template-columns: repeat(3, 1fr);
-  gap: 2rem;
+  gap: 2.5rem;
 
-  @media (max-width: 900px) {
+  @media (max-width: 1100px) {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  @media (max-width: 768px) {
     grid-template-columns: 1fr;
   }
 `;
 
 export const CardWrapper = styled(motion.div)`
   perspective: 1000px;
-  height: 100%;
-  min-height: 400px;
+  height: 520px;
   cursor: pointer;
   z-index: 1;
 
   @media (max-width: 900px) {
     position: sticky;
-    top: 20vh;
-    margin-bottom: 25vh; /* Large margin to allow scrolling time before next card covers */
-    height: auto;
-    min-height: 400px; /* Ensure cards are tall enough to cover */
+    top: 15vh;
+    margin-bottom: 10vh;
+    height: 500px; 
     width: 100%;
     background-color: transparent;
   }
@@ -90,34 +92,42 @@ const CardFace = styled.div`
   height: 100%;
   -webkit-backface-visibility: hidden;
   backface-visibility: hidden;
-  border-radius: 16px;
-  padding: 3rem 2rem;
+  border-radius: 20px;
   background: var(--card-bg);
   border: 1px solid var(--card-border);
   backdrop-filter: blur(10px);
   display: flex;
   flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.05);
+  overflow: hidden; /* Ensures image respects border radius */
+  box-shadow: 0 10px 30px -10px rgba(0, 0, 0, 0.1);
   
-  transition: all 0.3s ease;
+  transition: all 0.4s ease;
 
   @media (max-width: 900px) {
-      /* Ensure full opacity on mobile to cover stacked cards */
-      background: #050511; /* Or use a solid version of var(--card-bg) */
+      background: #050511;
       backdrop-filter: none;
       border: 1px solid rgba(255, 255, 255, 0.1);
   }
 `;
 
+export const CardContent = styled.div`
+  padding: 1.5rem 2rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+  flex: 1;
+  height: 100%;
+`;
+
 export const CardFront = styled(CardFace)`
-  background: var(--card-bg); /* Explicit resting background */
+  background: var(--card-bg); 
   
   &:hover {
-    background: var(--brand-color); /* Purple on Hover */
+    background: var(--brand-color);
     border-color: var(--brand-color);
-    box-shadow: 0 15px 40px rgba(107, 45, 135, 0.3);
+    transform: translateY(-5px);
+    box-shadow: 0 20px 40px -10px rgba(107, 45, 135, 0.5);
 
     h3, p {
       color: white !important;
@@ -127,6 +137,7 @@ export const CardFront = styled(CardFace)`
     button {
       border-color: white;
       color: white;
+      background: rgba(255, 255, 255, 0.1);
       
       &:hover {
         background: white;
@@ -139,16 +150,18 @@ export const CardFront = styled(CardFace)`
     font-size: 1.5rem;
     font-weight: 800;
     color: var(--brand-color);
-    margin-bottom: 1rem;
+    margin-bottom: 0.5rem;
     text-transform: uppercase;
     transition: color 0.3s;
+    letter-spacing: -0.5px;
   }
 
   p {
     color: var(--foreground);
     opacity: 0.8;
-    margin-bottom: 2rem;
-    line-height: 1.6;
+    margin-bottom: 1.5rem;
+    line-height: 1.5;
+    font-size: 0.95rem;
     transition: color 0.3s;
   }
 
@@ -161,12 +174,15 @@ export const CardFront = styled(CardFace)`
     text-transform: uppercase;
     cursor: pointer;
     transition: all 0.3s ease;
-    border-radius: 4px;
+    border-radius: 50px;
+    font-size: 0.85rem;
+    letter-spacing: 1px;
+    margin-top: auto;
 
     &:hover {
       background: var(--brand-secondary);
       color: white;
-      box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+      box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
     }
   }
 `;
@@ -175,20 +191,41 @@ export const CardBack = styled(CardFace)`
   transform: rotateY(180deg);
   background: var(--brand-color);
   border: 1px solid var(--brand-color);
+  justify-content: center;
+
+  ${CardContent} {
+    justify-content: center; 
+    gap: 1rem;
+  }
 
   h3 {
     font-size: 1.8rem;
-    color: var(--background); /* Invert for back face if background is brand color */
+    color: var(--background); 
     text-transform: uppercase;
     font-weight: 800;
-    margin-bottom: 1rem;
+    margin-bottom: 0;
   }
 
   p {
     color: var(--background);
-    font-size: 1rem;
-    line-height: 1.5;
-    opacity: 0.9;
+    font-size: 1.1rem;
+    line-height: 1.6;
+    opacity: 0.95;
   }
 `;
 
+export const ImageContainer = styled.div`
+  width: 100%;
+  height: 260px; /* Large prominent image area */
+  position: relative;
+  overflow: hidden;
+  flex-shrink: 0;
+  
+  img {
+    transition: transform 0.5s ease;
+  }
+
+  ${CardWrapper}:hover & img {
+    transform: scale(1.05);
+  }
+`;
