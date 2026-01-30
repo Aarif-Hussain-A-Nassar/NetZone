@@ -58,7 +58,7 @@ const services = [
     title: "ALARM SYSTEM",
     description: "Advanced intruder detection and alarm systems.",
     details: "Comprehensive alarm systems with motion sensors, door/window contacts, and 24/7 monitoring capabilities to keep your property safe.",
-    image: "/services/alarm.png"
+    image: "/services/alarm_v2.png"
   },
   {
     title: "EPABX & IPBX INTERCOM",
