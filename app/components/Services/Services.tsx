@@ -11,61 +11,61 @@ const services = [
   {
     title: "CCTV SYSTEMS",
     description: "Smart surveillance for complete security.",
-    details: "We provide state-of-the-art CCTV installation with remote viewing capabilities.",
+    details: "Our advanced CCTV systems offer 24/7 monitoring with high-definition recording, night vision, and remote access via mobile apps. We ensure every blind spot is covered, providing you with total peace of mind for your home or business security.",
     image: "/services/cctv.png"
   },
   {
     title: "BIOMETRICS",
     description: "Advanced fingerprint and face recognition.",
-    details: "Our biometric solutions encompass fingerprint, facial recognition, and iris scanning.",
+    details: "Secure your premises with cutting-edge biometric access control systems. From fingerprint scanners to facial recognition technology, we provide reliable, spoof-proof identity verification solutions that track attendance and restrict unauthorized entry effectively.",
     image: "/services/biometrics.png"
   },
   {
     title: "NETWORKING",
     description: "Complete networking and cabling solutions.",
-    details: "From home Wi-Fi setups to enterprise-level structured cabling.",
+    details: "We design and implement robust network infrastructures tailored to your needs. Whether it's structured cabling for offices, seamless Wi-Fi coverage for large homes, or complex enterprise data centers, our solutions ensure high-speed, stable connectivity.",
     image: "/services/networking.png"
   },
   {
     title: "GATE AUTOMATION",
     description: "Automatic gate systems for residential and commercial properties.",
-    details: "Experience convenience and security with our automated gate systems.",
+    details: "Upgrade your property's entrance with our automated gate systems. We offer sliding, swing, and telescopic gate motors that integrate seamlessly with remote controls and intercoms, combining luxury, convenience, and enhanced security.",
     image: "/services/gate.png"
   },
   {
     title: "VIDEO DOOR PHONES",
     description: "See and speak to visitors from anywhere.",
-    details: "Enhance your home security with video door phones.",
+    details: "Never miss a visitor with our smart video door phone systems. Featuring high-resolution cameras and two-way audio, you can see and speak to guests from your indoor monitor or smartphone, ensuring safety before you open the door.",
     image: "/services/videodoor.png"
   },
   {
     title: "LAPTOPS & PC",
     description: "Sales, service, and repairs for all brands.",
-    details: "We offer reliable repair services and sales of laptops and desktops.",
+    details: "Your one-stop solution for all computing needs. We specialized in the sales of top-brand laptops and custom-built PCs, alongside professional repair services for hardware issues, software troubleshooting, and performance upgrades.",
     image: "/services/laptop.png"
   },
   {
     title: "HOME AUTOMATION",
     description: "Transform your living space with smart tech.",
-    details: "Expert installation of touch switches and smart controls.",
+    details: "Turn your house into a smart home with our automation solutions. Control lighting, climate, curtains, and media devices with a single touch or voice command. We create energy-efficient, intuitive environments that adapt to your lifestyle.",
     image: "/services/homeauto.png"
   },
   {
     title: "PRINTER SERVICES",
     description: "Sales and maintenance for all printers.",
-    details: "We provide complete sales and professional service including cartridge refilling.",
+    details: "We offer end-to-end printer solutions, from selling high-efficiency laser and inkjet printers to providing expert maintenance and cartridge refilling services. Keep your office workflow uninterrupted with our reliable support.",
     image: "/services/printer.png"
   },
   {
     title: "ALARM SYSTEM",
     description: "Advanced intruder detection systems.",
-    details: "Comprehensive alarm systems with motion sensors and monitoring.",
+    details: "Protect your property with our intrusion detection systems. Equipped with motion sensors, door contacts, and loud sirens, our alarms instantly deter intruders and alert you to any unauthorized access, ensuring round-the-clock protection.",
     image: "/services/epabx.jpg"
   },
   {
     title: "EPABX & IPBX INTERCOM",
     description: "Seamless communication solutions.",
-    details: "Installation and maintenance of intercom systems.",
+    details: "Streamline internal and external communication with our EPABX and IPBX intercom systems. Ideal for offices and apartment complexes, our systems offer crystal-clear voice quality, call routing, and multi-line support for efficient connectivity.",
     image: "/services/intercom_phone.png"
   }
 ];

@@ -195,21 +195,25 @@ export const CardBack = styled(CardFace)`
   ${CardContent} {
     justify-content: center; 
     gap: 1rem;
+    padding: 2.5rem; /* Increased padding */
   }
 
   h3 {
-    font-size: 1.8rem;
+    font-size: 1.6rem; /* Slightly smaller to fit content */
     color: var(--background); 
     text-transform: uppercase;
     font-weight: 800;
-    margin-bottom: 0;
+    margin-bottom: 0.5rem;
   }
 
   p {
     color: var(--background);
-    font-size: 1.1rem;
+    font-size: 1rem;
     line-height: 1.6;
     opacity: 0.95;
+    text-align: justify; /* Aligns text to both left and right edges */
+    text-justify: inter-word;
+    width: 100%;
   }
 `;
 
