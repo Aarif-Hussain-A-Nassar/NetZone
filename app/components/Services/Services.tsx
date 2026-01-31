@@ -58,13 +58,13 @@ const services = [
     title: "ALARM SYSTEM",
     description: "Advanced intruder detection and alarm systems.",
     details: "Comprehensive alarm systems with motion sensors, door/window contacts, and 24/7 monitoring capabilities to keep your property safe.",
-    image: "/services/alarm_v2.png"
+    image: "/services/epabx.jpg"
   },
   {
     title: "EPABX & IPBX INTERCOM",
     description: "Seamless communication for offices and multi-unit buildings.",
     details: "Installation and maintenance of EPABX and IPBX intercom systems for efficient internal and external communication.",
-    image: "/services/epabx.jpg"
+    image: "/services/intercom_phone.png"
   }
 ];
 
@@ -84,12 +84,12 @@ const ServiceItem = ({ service, index }: { service: any, index: number }) => {
       >
         <CardFront>
           <ImageContainer>
-            <Image 
-              src={service.image} 
-              alt={service.title} 
-              fill 
+            <Image
+              src={service.image}
+              alt={service.title}
+              fill
               sizes="(max-width: 768px) 100vw, (max-width: 1200px) 33vw, 25vw"
-              style={{ objectFit: 'cover' }} 
+              style={{ objectFit: 'cover' }}
             />
           </ImageContainer>
           <CardContent>
@@ -122,9 +122,9 @@ const Services = () => {
           OUR SERVICES
         </motion.h2>
         <motion.p
-           initial={{ y: 20, opacity: 0 }}
-           whileInView={{ y: 0, opacity: 1 }}
-           transition={{ duration: 0.6, delay: 0.2 }}
+          initial={{ y: 20, opacity: 0 }}
+          whileInView={{ y: 0, opacity: 1 }}
+          transition={{ duration: 0.6, delay: 0.2 }}
         >
           Sales & Service Installation for all your technology needs.
         </motion.p>
