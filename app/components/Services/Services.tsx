@@ -1,10 +1,11 @@
 "use client";
 
+import { useState } from "react";
 import { motion } from "framer-motion";
 import Image from "next/image";
 import useIsMobile from "../../hooks/useIsMobile";
 import MobileServiceStack from "./MobileServiceStack";
-import { ServicesSection, Header, ServiceGrid, CardWrapper, CardFront, ImageContainer, CardContent } from "./styles";
+import { ServicesSection, Header, ServiceGrid, CardWrapper, CardFront, ImageContainer, CardContent, CardInner, CardBack } from "./styles";
 
 const services = [
   {
@@ -71,30 +72,48 @@ const services = [
 
 // Desktop Layout: Simple Card (No Flip)
 const ServiceItem = ({ service, index }: { service: any, index: number }) => {
+  const [isFlipped, setIsFlipped] = useState(false);
+
   return (
     <CardWrapper
       initial={{ opacity: 0, y: 30 }}
       whileInView={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.5, delay: index * 0.1 }}
       viewport={{ once: true }}
-      style={{ perspective: 'none' }} // Disable 3D perspective for desktop
+      onMouseLeave={() => setIsFlipped(false)}
     >
-      {/* Direct rendering without CardInner/Flip logic */}
-      <CardFront style={{ position: 'relative', transform: 'none' }}>
-        <ImageContainer>
-          <Image
-            src={service.image}
-            alt={service.title}
-            fill
-            sizes="(max-width: 768px) 100vw, (max-width: 1200px) 33vw, 25vw"
-            style={{ objectFit: 'cover' }}
-          />
-        </ImageContainer>
-        <CardContent>
-          <h3>{service.title}</h3>
-          <p>{service.description}</p>
-        </CardContent>
-      </CardFront>
+      <CardInner
+        initial={false}
+        animate={{ rotateY: isFlipped ? 180 : 0, scale: isFlipped ? 1.05 : 1 }}
+        transition={{ duration: 0.6, type: "spring", stiffness: 260, damping: 20 }}
+      >
+        <CardFront>
+          <ImageContainer>
+            <Image
+              src={service.image}
+              alt={service.title}
+              fill
+              sizes="(max-width: 768px) 100vw, (max-width: 1200px) 33vw, 25vw"
+              style={{ objectFit: 'cover' }}
+            />
+          </ImageContainer>
+          <CardContent>
+            <h3>{service.title}</h3>
+            <p>{service.description}</p>
+            <button onClick={(e) => {
+              e.stopPropagation();
+              setIsFlipped(true);
+            }}>Know More</button>
+          </CardContent>
+        </CardFront>
+
+        <CardBack onClick={() => setIsFlipped(false)}>
+          <CardContent>
+            <h3>{service.title}</h3>
+            <p>{service.details}</p>
+          </CardContent>
+        </CardBack>
+      </CardInner>
     </CardWrapper>
   );
 };

@@ -166,9 +166,9 @@ export const CardFront = styled(CardFace)`
   }
 
   button {
-    background: transparent;
-    color: var(--brand-secondary);
-    border: 1px solid var(--brand-secondary);
+    background: var(--brand-secondary);
+    color: white;
+    border: none;
     padding: 0.8rem 2rem;
     font-weight: 700;
     text-transform: uppercase;
@@ -180,8 +180,7 @@ export const CardFront = styled(CardFace)`
     margin-top: auto;
 
     &:hover {
-      background: var(--brand-secondary);
-      color: white;
+      transform: scale(1.05);
       box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
     }
   }
