@@ -1,116 +1,107 @@
 "use client";
 
-import { useState } from "react";
 import { motion } from "framer-motion";
 import Image from "next/image";
-import { ServicesSection, Header, ServiceGrid, CardWrapper, CardInner, CardFront, CardBack, ImageContainer, CardContent } from "./styles";
+import useIsMobile from "../../hooks/useIsMobile";
+import MobileServiceStack from "./MobileServiceStack";
+import { ServicesSection, Header, ServiceGrid, CardWrapper, CardFront, ImageContainer, CardContent } from "./styles";
 
 const services = [
   {
     title: "CCTV SYSTEMS",
     description: "Smart surveillance for complete security.",
-    details: "We provide state-of-the-art CCTV installation with remote viewing capabilities, ensuring your property is monitored 24/7 from anywhere in the world.",
+    details: "We provide state-of-the-art CCTV installation with remote viewing capabilities.",
     image: "/services/cctv.png"
   },
   {
     title: "BIOMETRICS",
-    description: "Advanced fingerprint and face recognition systems for secure access control.",
-    details: "Our biometric solutions encompass fingerprint, facial recognition, and iris scanning for top-tier security and attendance management.",
+    description: "Advanced fingerprint and face recognition.",
+    details: "Our biometric solutions encompass fingerprint, facial recognition, and iris scanning.",
     image: "/services/biometrics.png"
   },
   {
     title: "NETWORKING",
-    description: "Complete networking solutions, including access points and structured cabling.",
-    details: "From home Wi-Fi setups to enterprise-level structured cabling and server rack management, we handle all your connectivity needs.",
+    description: "Complete networking and cabling solutions.",
+    details: "From home Wi-Fi setups to enterprise-level structured cabling.",
     image: "/services/networking.png"
   },
   {
     title: "GATE AUTOMATION",
     description: "Automatic gate systems for residential and commercial properties.",
-    details: "Experience convenience and security with our automated gate systems, compatible with remote controls, keypads, and smartphone apps.",
+    details: "Experience convenience and security with our automated gate systems.",
     image: "/services/gate.png"
   },
   {
     title: "VIDEO DOOR PHONES",
-    description: "See and speak to visitors at your door from anywhere in your home.",
-    details: "Enhance your home security with video door phones that let you see and communicate with visitors before granting access.",
+    description: "See and speak to visitors from anywhere.",
+    details: "Enhance your home security with video door phones.",
     image: "/services/videodoor.png"
   },
   {
     title: "LAPTOPS & PC",
-    description: "Sales, visual service, and repairs for all major computer brands.",
-    details: "We offer reliable repair services, upgrades, and sales of new and refurbished laptops and desktops for home and office use.",
+    description: "Sales, service, and repairs for all brands.",
+    details: "We offer reliable repair services and sales of laptops and desktops.",
     image: "/services/laptop.png"
   },
   {
     title: "HOME AUTOMATION",
-    description: "Transform your living space with smart technology.",
-    details: "Expert installation of touch switches, automatic curtains, and intelligent water level indicators for a modern, convenient lifestyle.",
+    description: "Transform your living space with smart tech.",
+    details: "Expert installation of touch switches and smart controls.",
     image: "/services/homeauto.png"
   },
   {
     title: "PRINTER SERVICES",
-    description: "Expert sales and maintenance for all printer types.",
-    details: "We provide complete sales and professional service including cartridge refilling and hardware repairs for all major printer brands.",
+    description: "Sales and maintenance for all printers.",
+    details: "We provide complete sales and professional service including cartridge refilling.",
     image: "/services/printer.png"
   },
   {
     title: "ALARM SYSTEM",
-    description: "Advanced intruder detection and alarm systems.",
-    details: "Comprehensive alarm systems with motion sensors, door/window contacts, and 24/7 monitoring capabilities to keep your property safe.",
+    description: "Advanced intruder detection systems.",
+    details: "Comprehensive alarm systems with motion sensors and monitoring.",
     image: "/services/epabx.jpg"
   },
   {
     title: "EPABX & IPBX INTERCOM",
-    description: "Seamless communication for offices and multi-unit buildings.",
-    details: "Installation and maintenance of EPABX and IPBX intercom systems for efficient internal and external communication.",
+    description: "Seamless communication solutions.",
+    details: "Installation and maintenance of intercom systems.",
     image: "/services/intercom_phone.png"
   }
 ];
 
+// Desktop Layout: Simple Card (No Flip)
 const ServiceItem = ({ service, index }: { service: any, index: number }) => {
-  const [isFlipped, setIsFlipped] = useState(false);
-
   return (
     <CardWrapper
-      initial={{ opacity: 0, y: 50 }}
+      initial={{ opacity: 0, y: 30 }}
       whileInView={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.5, delay: index * 0.1 }}
       viewport={{ once: true }}
+      style={{ perspective: 'none' }} // Disable 3D perspective for desktop
     >
-      <CardInner
-        animate={{ rotateY: isFlipped ? 180 : 0 }}
-        transition={{ duration: 0.4, type: "spring", stiffness: 260, damping: 20 }}
-      >
-        <CardFront>
-          <ImageContainer>
-            <Image
-              src={service.image}
-              alt={service.title}
-              fill
-              sizes="(max-width: 768px) 100vw, (max-width: 1200px) 33vw, 25vw"
-              style={{ objectFit: 'cover' }}
-            />
-          </ImageContainer>
-          <CardContent>
-            <h3>{service.title}</h3>
-            <p>{service.description}</p>
-            <button onClick={() => setIsFlipped(true)}>Read More</button>
-          </CardContent>
-        </CardFront>
-
-        <CardBack onClick={() => setIsFlipped(false)}>
-          <CardContent>
-            <h3>{service.title}</h3>
-            <p>{service.details}</p>
-          </CardContent>
-        </CardBack>
-      </CardInner>
+      {/* Direct rendering without CardInner/Flip logic */}
+      <CardFront style={{ position: 'relative', transform: 'none' }}>
+        <ImageContainer>
+          <Image
+            src={service.image}
+            alt={service.title}
+            fill
+            sizes="(max-width: 768px) 100vw, (max-width: 1200px) 33vw, 25vw"
+            style={{ objectFit: 'cover' }}
+          />
+        </ImageContainer>
+        <CardContent>
+          <h3>{service.title}</h3>
+          <p>{service.description}</p>
+        </CardContent>
+      </CardFront>
     </CardWrapper>
   );
 };
 
 const Services = () => {
+  const isMobile = useIsMobile();
+
   return (
     <ServicesSection id="services">
       <Header>
@@ -130,11 +121,16 @@ const Services = () => {
         </motion.p>
       </Header>
 
-      <ServiceGrid>
-        {services.map((service, index) => (
-          <ServiceItem key={index} service={service} index={index} />
-        ))}
-      </ServiceGrid>
+      {/* Conditional Rendering based on Device Type */}
+      {isMobile ? (
+        <MobileServiceStack services={services} />
+      ) : (
+        <ServiceGrid>
+          {services.map((service, index) => (
+            <ServiceItem key={index} service={service} index={index} />
+          ))}
+        </ServiceGrid>
+      )}
     </ServicesSection>
   );
 };
