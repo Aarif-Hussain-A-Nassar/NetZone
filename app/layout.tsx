@@ -14,8 +14,8 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "Netzone - The complete solution | CCTV Installation in Kochi & Alappuzha",
-  description: "Netzone - The complete solution provides expert CCTV installation services in Kochi, Alappuzha, and Chandiroor. The complete solution for your security needs.",
+  title: "Netzone - The complete solution | CCTV & Security Systems",
+  description: "Netzone - The complete solution provides expert CCTV installation services in Kochi, Ernakulam, Alappuzha, and Chandiroor. The complete solution for your security needs.",
   metadataBase: new URL("https://www.netzonethecompletesolutions.com/"),
   keywords: [
     "Netzone - The complete solution",
@@ -24,12 +24,13 @@ export const metadata: Metadata = {
     "netzone chandiroor",
     "cctv installation kochi",
     "cctv installations alappuzha",
+    "cctv installation ernakulam",
     "CCTV",
     "Security Systems"
   ],
   openGraph: {
-    title: "Netzone - The complete solution | CCTV Installation in Kochi & Alappuzha",
-    description: "Netzone - The complete solution provides expert CCTV installation services in Kochi, Alappuzha, and Chandiroor",
+    title: "Netzone - The complete solution | CCTV & Security Systems",
+    description: "Netzone - The complete solution provides expert CCTV installation services in Kochi, Ernakulam, Alappuzha, and Chandiroor",
     url: "https://www.netzonethecompletesolutions.com/",
     siteName: "Netzone - The complete solution",
     locale: "en_IN",
@@ -41,7 +42,7 @@ const jsonLd = {
   '@context': 'https://schema.org',
   '@type': 'LocalBusiness',
   name: 'Netzone - The complete solution',
-  description: 'Netzone - The complete solution provides expert CCTV installation services in Kochi, Alappuzha, and Chandiroor.',
+  description: 'Netzone - The complete solution provides expert CCTV installation services in Kochi, Ernakulam, Alappuzha, and Chandiroor.',
   url: 'https://www.netzonethecompletesolutions.com/',
   address: {
     '@type': 'PostalAddress',
@@ -61,6 +62,10 @@ const jsonLd = {
     {
       '@type': 'City',
       name: 'Chandiroor'
+    },
+    {
+      '@type': 'City',
+      name: 'Ernakulam'
     }
   ]
 };
