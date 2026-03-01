@@ -37,6 +37,34 @@ export const metadata: Metadata = {
   },
 };
 
+const jsonLd = {
+  '@context': 'https://schema.org',
+  '@type': 'LocalBusiness',
+  name: 'Netzone - The complete solution',
+  description: 'Netzone - The complete solution provides expert CCTV installation services in Kochi, Alappuzha, and Chandiroor.',
+  url: 'https://www.netzonethecompletesolutions.com/',
+  address: {
+    '@type': 'PostalAddress',
+    addressLocality: 'Chandiroor',
+    addressRegion: 'Kerala',
+    addressCountry: 'IN'
+  },
+  areaServed: [
+    {
+      '@type': 'City',
+      name: 'Kochi'
+    },
+    {
+      '@type': 'City',
+      name: 'Alappuzha'
+    },
+    {
+      '@type': 'City',
+      name: 'Chandiroor'
+    }
+  ]
+};
+
 export default function RootLayout({
   children,
 }: Readonly<{
@@ -48,6 +76,10 @@ export default function RootLayout({
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >
         <StyledComponentsRegistry>
+          <script
+            type="application/ld+json"
+            dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+          />
           {children}
         </StyledComponentsRegistry>
       </body>
