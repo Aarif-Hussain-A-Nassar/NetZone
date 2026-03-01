@@ -14,8 +14,27 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "NetZone",
-  description: "NetZone - The Complete Solution",
+  title: "Netzone - The complete solution | CCTV Installation in Kochi & Alappuzha",
+  description: "Netzone - The complete solution provides expert CCTV installation services in Kochi, Alappuzha, and Chandiroor. The complete solution for your security needs.",
+  metadataBase: new URL("https://www.netzonethecompletesolutions.com/"),
+  keywords: [
+    "Netzone - The complete solution",
+    "Netzone",
+    "Google Netzone",
+    "netzone chandiroor",
+    "cctv installation kochi",
+    "cctv installations alappuzha",
+    "CCTV",
+    "Security Systems"
+  ],
+  openGraph: {
+    title: "Netzone - The complete solution | CCTV Installation in Kochi & Alappuzha",
+    description: "Netzone - The complete solution provides expert CCTV installation services in Kochi, Alappuzha, and Chandiroor",
+    url: "https://www.netzonethecompletesolutions.com/",
+    siteName: "Netzone - The complete solution",
+    locale: "en_IN",
+    type: "website",
+  },
 };
 
 export default function RootLayout({
