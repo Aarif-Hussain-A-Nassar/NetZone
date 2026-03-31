@@ -78,11 +78,11 @@ const Footer = () => {
       </Container>
       
       <DeveloperCredit 
-        href="https://www.instagram.com/twodotsofficial_?igsh=eHVtNWFnZW5uOTBq" 
+        href="https://www.instagram.com/twodots.dev" 
         target="_blank" 
         rel="noopener noreferrer"
       >
-        <span>Created by</span> <Icons.Instagram /> <strong>twodotsofficial_</strong>
+        <span>Created by</span> <Icons.Instagram /> <strong>twodots.dev</strong>
       </DeveloperCredit>
     </FooterSection>
   );
